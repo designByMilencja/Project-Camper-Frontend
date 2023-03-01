@@ -1,0 +1,13 @@
+.charts {
+    height: 40vh;
+    min-width: 50vh;
+    margin: 1rem;
+    padding: 2rem;
+    background-image: url('../../img/home/bar-chart.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+h2 {
+    text-align: center;
+    margin: 1rem;
+}
