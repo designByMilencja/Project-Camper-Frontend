@@ -1,5 +1,5 @@
 import React from "react";
-import {Button} from "../common/Button";
+import {Button} from "../common/Button/Button";
 import './Select.css'
 
 export const Select = () => {
@@ -14,11 +14,11 @@ return <>
             </select>
             <Button text="sprawdź"></Button>
         </div>
-        <div className="selectPlace">
-            <select name="place">
+        <div className="selectCountry">
+            <select name="country">
                 <option value=""> - - - </option>
-                <option value="">Hiszpania</option>
-                <option value="">Teneryfa</option>
+                <option value="">Hiszpania(kontynentalna)</option>
+                <option value="">Hiszpania(Teneryfa)</option>
                 <option value="">Polska</option>
             </select>
             <Button text="sprawdź"></Button>

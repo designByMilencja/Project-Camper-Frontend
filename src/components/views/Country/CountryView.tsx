@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export const PlaceView = () => {
+export const CountryView = () => {
     return <>
         <p>ok</p>
     </>

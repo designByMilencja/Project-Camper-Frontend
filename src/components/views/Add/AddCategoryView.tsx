@@ -1,15 +1,14 @@
 import React, {SyntheticEvent, useState} from "react";
 import {Button} from "../../common/Button/Button";
 
-export const AddPlaceView = () => {
+export const AddCategoryView = () => {
     const [form, setForm] = useState({
-        name: '',
-        currency: '',
+        name: ''
     });
-    const saveNewCountry = async (e: SyntheticEvent) => {
+    const saveNewCategory = async (e:SyntheticEvent) => {
         e.preventDefault();
         try {
-            const res =  await fetch('http://localhost:3001/country', {
+            const res =  await fetch('http://localhost:3001/category', {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
@@ -30,15 +29,11 @@ export const AddPlaceView = () => {
             [key]: value,
         }))
     }
-
     return <>
-        <form className="form" onSubmit={saveNewCountry}>
-            <h2>Dodaj miejsce</h2>
+        <form className="form" onSubmit={saveNewCategory}>
+            <h2>Dodaj kategorię</h2>
             <label>Nazwa</label>
-            <input type="text" required maxLength={60} value={form.name}
-                   onChange={e => saveForm('name', e.target.value)}/>
-            <label>Symbol waluty</label>
-            <input type="text" required value={form.currency} onChange={e => saveForm('currency', e.target.value)}/>
+            <input type="text" required maxLength={50} value={form.name} onChange={e => saveForm('name', e.target.value)}/>
             <Button text="Dodaj"/>
         </form>
     </>
