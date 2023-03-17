@@ -1,0 +1,35 @@
+header {
+    background-image: url('../../img/header/smallheader.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 1rem;
+    padding: 2rem 3rem;
+    height: 50vh;
+    letter-spacing: 2px;
+}
+header .header {
+    display: flex;
+    justify-content: space-between;
+}
+h1 {
+    color: aliceblue;
+}
+h3 {
+    padding: 2rem;
+}
+.current-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    margin: 3rem;
+
+}
+@media (min-width: 768px) {
+    header {
+        background-image: url('../../img/header/bigheader.jpg');
+    }
+}
+
