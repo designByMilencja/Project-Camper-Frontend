@@ -1,0 +1,6 @@
+.converter {
+    max-width: 600px;
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+}
