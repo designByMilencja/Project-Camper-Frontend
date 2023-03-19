@@ -33,7 +33,7 @@ export const AddPlaceView = () => {
 
     return <>
         <form className="form" onSubmit={saveNewCountry}>
-            <h2>Dodaj miejsce</h2>
+            <h2 className='add'>Dodaj miejsce</h2>
             <label>Nazwa</label>
             <input type="text" required maxLength={60} value={form.name}
                    onChange={e => saveForm('name', e.target.value)}/>

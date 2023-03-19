@@ -14,7 +14,7 @@ return <>
     <Routes>
         <Route path="/" element={<MainView/>}> </Route>
         <Route path="/month/:month" element={<MonthView/>}> </Route>
-        <Route path="/country:country" element={<CountryView/>}> </Route>
+        <Route path="/country/:country" element={<CountryView/>}> </Route>
         <Route path="/login" element={<LoginView/>}> </Route>
         <Route path="/add" element={<AddView/>}> </Route>
     </Routes>

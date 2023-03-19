@@ -9,6 +9,7 @@ export const AddPaymentView = () => {
         idCountry: '',
         idCategory: '',
     });
+
     const saveNewPayment = async (e: SyntheticEvent) => {
         e.preventDefault();
         try {
@@ -35,14 +36,16 @@ export const AddPaymentView = () => {
     }
     return <>
         <form className="form" onSubmit={saveNewPayment}>
-            <h2>Dodaj wydatek</h2>
+            <h2 className='add'>Dodaj wydatek</h2>
             <label>Kwota</label>
             <input type="number" maxLength={999999.99} required value={form.cost}
                    onChange={e => saveForm('cost', e.target.value)}/>
             <label>Waluta</label>
             <select value={form.currency} onChange={e => saveForm('currency', e.target.value)}>
                 <option>--</option>
+                <option>USD</option>
                 <option>EUR</option>
+                <option>eur</option>
             </select>
             <label>Data zakupu</label>
             <input type="date" required value={form.boughtAt} onChange={e => saveForm('boughtAt', e.target.value)}/>
