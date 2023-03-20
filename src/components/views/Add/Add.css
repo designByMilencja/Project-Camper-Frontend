@@ -10,6 +10,8 @@ input, select {
     margin: 1rem auto;
     width: 30vh;
     background-color: aliceblue;
+    text-align: center;
+    text-transform: uppercase;
 }
 h2.add {
     color: black;

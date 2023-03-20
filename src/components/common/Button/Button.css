@@ -1,4 +1,4 @@
-button {
+button, .btn {
     padding: 1rem 1.5rem;
     margin: 1rem;
     background-color: rgba(238, 163, 234, 0.10);

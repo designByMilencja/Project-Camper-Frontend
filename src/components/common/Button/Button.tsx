@@ -5,5 +5,4 @@ interface Props {
     text: string;
     to?: string;
 }
-export const Button = ({text, to}:Props) => to ? (<Link className="button" to={to}/>) : <button>{text}</button>
-
+export const Button = ({to, text}:Props) => (to ? <Link className="btn" to={to}>{text}</Link> : <button>{text}</button>)

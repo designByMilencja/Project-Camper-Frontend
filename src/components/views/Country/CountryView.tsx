@@ -1,6 +1,6 @@
 import React from "react";
-import '../TableView.css'
-import {ConverterView} from "../../Converter/Converter";
+import '../Table.css'
+import {ConverterView} from "../../common/Converter/Converter";
 
 export const CountryView = () => {
     return <>

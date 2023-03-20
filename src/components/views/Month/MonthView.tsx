@@ -1,7 +1,7 @@
 import React from "react";
 import {useCategoryInfo} from "../../../hooks/useCategoryInfo";
-import {ConverterView} from "../../Converter/Converter";
-import '../TableView.css';
+import {ConverterView} from "../../common/Converter/Converter";
+import '../Table.css';
 import {useSumCategory} from "../../../hooks/useSumCategory";
 
 export const MonthView = () => {
