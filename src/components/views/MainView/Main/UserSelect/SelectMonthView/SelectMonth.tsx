@@ -1,8 +1,8 @@
 import React, {SyntheticEvent, useState} from "react";
-import {Button} from "../../../../common/Button/Button";
+import {Button} from "../../../../../common/Button/Button";
 import {MonthEntity} from 'types';
-import {useFetchAndLoading} from "../../../../../hooks/useFetchAndLoading";
-
+import {useFetchAndLoading} from "../../../../../../hooks/useFetchAndLoading";
+import '../UserSelect.css'
 export const SelectMonth = () => {
     const [month, setMonth] = useState('');
     const [monthsData, isLoading]= useFetchAndLoading('http://localhost:3001/month');
@@ -16,12 +16,12 @@ export const SelectMonth = () => {
     const urlMonth = `/month/${month}`;
     if (isLoading) return <h1>Trwa ładowanie...</h1>
     return <>
-        <form onSubmit={sendForm}>
+        <form onSubmit={sendForm} className="selectForm">
             <select name="month" value={month} onChange={changeMonth}>
                 <option value=""> - miesiąc -</option>
                 {monthsData.map((month: MonthEntity) => <option key={month.id} value={month.name}>{month.name}</option>)}
             </select>
-            <Button text="sprawdź" to={urlMonth} name="btn"></Button>
+            <Button text="sprawdź" to={urlMonth} name="select"></Button>
         </form>
     </>;
 }

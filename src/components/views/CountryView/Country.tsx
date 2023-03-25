@@ -1,5 +1,5 @@
 import React from "react";
-import '../MonthandCountry.css'
+import '../Table.css'
 import {ConverterView} from "../../common/Converter/Converter";
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 import {useParams} from "react-router-dom";
@@ -35,7 +35,6 @@ export const Country = () => {
                     <tr>
                         <th>Kategoria</th>
                         <th>Suma</th>
-                        <th>Ilość dni w wybranym kraju</th>
                     </tr>
                     </thead>
                     <tbody>

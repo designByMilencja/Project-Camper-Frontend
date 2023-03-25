@@ -1,5 +1,5 @@
 import React from "react";
-import '../MonthandCountry.css';
+import '../Table.css';
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 import {ConverterView} from "../../common/Converter/Converter";
 import {useParams} from "react-router-dom";
