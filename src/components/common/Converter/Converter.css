@@ -1,0 +1,9 @@
+.converter, .result {
+    background-color:  rgba(238, 163, 234, 0.24);
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

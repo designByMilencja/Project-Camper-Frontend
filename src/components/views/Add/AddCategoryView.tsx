@@ -31,7 +31,7 @@ export const AddCategoryView = () => {
     }
     return <>
         <form className="form" onSubmit={saveNewCategory}>
-            <h2>Dodaj kategorię</h2>
+            <h2 className='add'>Dodaj kategorię</h2>
             <label>Nazwa</label>
             <input type="text" required maxLength={50} value={form.name} onChange={e => saveForm('name', e.target.value)}/>
             <Button text="Dodaj"/>

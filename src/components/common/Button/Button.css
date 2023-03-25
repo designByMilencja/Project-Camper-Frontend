@@ -1,6 +1,12 @@
-button {
+button, .btn, .btn a {
     padding: 1rem 1.5rem;
-    background-color: aliceblue;
-    border-radius: 4px;
+    margin: 1rem;
+    background-color: rgba(238, 163, 234, 0.10);
+    border-radius: 12px;
     cursor: pointer;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border: black 1px solid;
 }

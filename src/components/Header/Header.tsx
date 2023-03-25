@@ -12,7 +12,7 @@ export const Header = () => {
                 <Button text="Panel Admina"/>
             </div>
             <div className="current-info">
-                <h3>Aktualne miejsce: Teneryfa</h3>
+                <h2>Aktualne miejsce: Teneryfa</h2>
                 <Datetime/>
             </div>
         </header>
