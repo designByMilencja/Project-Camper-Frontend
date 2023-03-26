@@ -1,10 +1,10 @@
 import React from "react";
-import {Chart} from "../Chart/Chart";
-import {UserChoice} from "../UserChoice/UserChoice";
+import {Chart} from "./Chart/Chart";
+import {UserSelect} from "./UserSelect/UserSelect";
 import './Main.css'
 export const MainView = () =>  {
     return <div className="main">
         <Chart></Chart>
-        <UserChoice></UserChoice>
+        <UserSelect></UserSelect>
     </div>
 }

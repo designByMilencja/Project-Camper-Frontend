@@ -1,9 +1,9 @@
-import React from "react";
+import React, {ChangeEventHandler} from "react";
 import './Select.css'
 interface Props {
     name: string;
     value: string;
-    onChange: (e:any) => any;
+    onChange: (e:React.ChangeEvent<HTMLSelectElement>) =>  ChangeEventHandler<HTMLSelectElement> | undefined;
     children: any;
 }
 export const Select = (props:Props) => {
