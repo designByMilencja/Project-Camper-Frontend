@@ -14,7 +14,7 @@ export const Error = (props: Props) => {
                     href="https://pixabay.com/pl//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1700515"> Pixabay</a>
                 </div>
             </div>
-            <Button to="/" name="backToHome" text="Powrót na stronę główną"/>
+            <Button to="/" name="btn center" text="Powrót na stronę główną"/>
         </>
     )
 }

@@ -13,6 +13,16 @@ input, select {
     text-align: center;
     text-transform: uppercase;
 }
-h2.add {
+h3.add, h2.add {
     color: black;
+}
+.success {
+    text-align: center;
+    background: #20c70b;
+    padding: 2rem;
+}
+.error {
+    text-align: center;
+    background: #f50517;
+    padding: 2rem;
 }

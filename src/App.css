@@ -1,5 +1,6 @@
 body {
     background-color: rgba(238, 163, 234, 0.24);
+    letter-spacing: .2rem;
 }
 .wrapper {
     margin: 0 auto;

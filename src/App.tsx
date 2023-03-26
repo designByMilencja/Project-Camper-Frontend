@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
-import {HomeView} from "./components/views/Home/HomeView";
+import {Home} from "./components/views/HomeView/Home";
 
 export function App() {
 
     return (
         <div className="wrapper">
-            <HomeView></HomeView>
+            <Home></Home>
         </div>
     );
 }
+
 
 

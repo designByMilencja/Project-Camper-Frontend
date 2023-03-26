@@ -1,12 +1,38 @@
-button, .btn, .btn a {
+a {
+    cursor: pointer;
+}
+button, .btn {
     padding: 1rem 1.5rem;
     margin: 1rem;
     background-color: rgba(238, 163, 234, 0.10);
     border-radius: 12px;
     cursor: pointer;
     letter-spacing: .2rem;
+
+}
+a.center {
+    background-color:  rgba(238, 163, 234, 0.24);
+    display: block;
+    margin: 2rem auto;
+    width: 100%;
+    padding: 12px;
     text-decoration: none;
+    text-transform: uppercase;
     text-align: center;
-    display: inline-block;
-    border: black 1px solid;
+}
+a.btn {
+    text-decoration: none;
+    text-transform: uppercase;
+}
+a.header {
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 3.2rem;
+    font-weight: bold;
+    margin: 3rem;
+}
+a.select {
+    margin: 0 auto;
+    text-transform: uppercase;
+    text-decoration: none;
 }

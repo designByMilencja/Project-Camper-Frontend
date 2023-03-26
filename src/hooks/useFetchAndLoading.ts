@@ -10,9 +10,12 @@ export const useFetchAndLoading = (fetchUrl:string): Data => {
                 setIsLoading(true)
                 const res = await fetch(fetchUrl);
                 const data = await res.json();
+                if(res.status!== 200) {
+                    throw {"message": data.message}
+                }
                 setData(data);
-            } catch (e) {
-                console.error('Błędne dane');
+            } catch (err) {
+                console.error('Wystąpił błąd podczas próby wykonania zapytania');
             }
         };
         fetchData().then(null);
