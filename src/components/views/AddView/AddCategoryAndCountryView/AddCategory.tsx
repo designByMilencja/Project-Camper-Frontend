@@ -1,6 +1,6 @@
 import React, {SyntheticEvent, useState} from "react";
-import {Button} from "../../common/Button/Button";
-import '../../common/Button/Button.css'
+import {Button} from "../../../common/Button/Button";
+import '../../../common/Button/Button.css'
 
 export const AddCategory = () => {
     const [form, setForm] = useState({
@@ -39,11 +39,11 @@ export const AddCategory = () => {
         <form className="form" onSubmit={saveNewCategory}>
             <h3 className='add'>Dodaj kategorię</h3>
             <label>Nazwa kategorii</label>
-            <input type="text" required minLength={5} maxLength={50} value={form.name}
+            <input type="text" required minLength={4} maxLength={50} value={form.name}
                    onChange={e => saveForm('name', e.target.value)} onMouseDown={clearInput}/>
             <Button text="Dodaj kategorię" name="btn"></Button>
             {status === 200 ? <p className="success">Kategoria została dodana pomyślnie</p> : null}
-            {status === 400 ? <p className="error">Kategoria istnieje, przejdź do dodania wydatku </p> : null}
+            {status === 400 ? <p className="error">Kategoria istnieje, przejdź do dodania kraju </p> : null}
         </form>
     </>
 }

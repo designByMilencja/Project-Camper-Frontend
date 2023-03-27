@@ -49,7 +49,7 @@ export const Country = () => {
             :
             null}
         {allowCountries.includes(country.toUpperCase()) ?
-            <ConverterView/> : <Error text="Wprowadź poprawną nazwę miesiąca, aby sprawdzić wydatki"/>
+            <ConverterView/> : <Error text="Wprowadź poprawną nazwę kraju, aby sprawdzić wydatki"/>
            }
     </>
 }

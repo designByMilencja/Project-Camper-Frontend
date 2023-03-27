@@ -1,8 +1,9 @@
 import React, {SyntheticEvent, useState} from "react";
-import {Button} from "../../common/Button/Button";
-import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
+import {Button} from "../../../common/Button/Button";
+import {useFetchAndLoading} from "../../../../hooks/useFetchAndLoading";
 import {CountryEntity} from 'types';
 import {CategoryEntity} from 'types';
+
 export const AddPayment = () => {
     const [form, setForm] = useState({
         cost: 0,
@@ -62,7 +63,7 @@ export const AddPayment = () => {
             <label>Waluta</label>
             <select value={form.currency} onChange={e => saveForm('currency', e.target.value)}>
                 <option>--</option>
-                {noDoubleCurrencies.map((currency, index)=><option key={index} value={currency}>{currency}</option>)}
+                {noDoubleCurrencies.map((currency, index) => <option key={index} value={currency}>{currency}</option>)}
             </select>
             {isCorrect > 0 ? <p className="error">Data płatności nie może być z przyszłości</p> : null}
             <label>Data zakupu</label>
@@ -71,16 +72,20 @@ export const AddPayment = () => {
             <label>Miejsce zakupu</label>
             <select value={form.idCountry} onChange={e => saveForm('idCountry', e.target.value)}>
                 <option>--</option>
-                {countriesData.map((country:CountryEntity)=> <option key={country.name} value={country.id}>{country.name}</option>)}
+                {countriesData.map((country: CountryEntity) => <option key={country.name}
+                                                                       value={country.id}>{country.name}</option>)}
             </select>
             <label>Kategoria zakupu</label>
             <select name="category" value={form.idCategory} onChange={e => saveForm('idCategory', e.target.value)}>
                 <option>--</option>
-                {categoriesData.map((category:CategoryEntity)=> <option key={category.id} value={category.id}>{category.name}</option>)}
+                {categoriesData.map((category: CategoryEntity) => <option key={category.id}
+                                                                          value={category.id}>{category.name}</option>)}
             </select>
             <Button text="Dodaj wydatek" name="btn"/>
             {status === 200 ? <p className="success">Wydatek został dodany pomyślnie</p> : null}
-            {status === 400 ? <p className="error">Wydatek nie został dodany, sprawdź poprawność danych w  formularzu </p> : null }
-                </form>
+            {status === 400 ?
+                <p className="error">Wydatek nie został dodany, sprawdź poprawność danych w formularzu </p> : null}
+        </form>
+        <Button text="Powrót na stronę główną" to="/" name="center"/>
     </>
 }

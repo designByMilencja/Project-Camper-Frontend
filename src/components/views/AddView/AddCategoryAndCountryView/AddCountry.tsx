@@ -1,5 +1,5 @@
 import React, {SyntheticEvent, useState} from "react";
-import {Button} from "../../common/Button/Button";
+import {Button} from "../../../common/Button/Button";
 
 export const AddCountry = () => {
     const [symbols, setSymbols] = useState([]);
@@ -54,7 +54,7 @@ export const AddCountry = () => {
         <form className="form" onSubmit={saveNewCountry}>
             <h3 className='add'>Dodaj kraj</h3>
             <label>Nazwa kraju</label>
-            <input type="text" required maxLength={60} value={form.name}
+            <input type="text" required maxLength={60} minLength={5} value={form.name}
                    onChange={e => saveForm('name', e.target.value)} onMouseDown={clearInput}/>
             <label>Symbol waluty kraju</label>
             <select value={form.currency} onChange={e => saveForm('currency', e.target.value)} onClick={currency}>
