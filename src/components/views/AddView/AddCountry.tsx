@@ -2,6 +2,19 @@ import React, {SyntheticEvent, useState} from "react";
 import {Button} from "../../common/Button/Button";
 
 export const AddCountry = () => {
+    const [symbols, setSymbols] = useState([]);
+    const currency = async () => {
+        try {
+            const url = 'https://api.nbp.pl/api/exchangerates/tables/A/?format=json';
+            const res = await fetch(url, {mode: 'cors'});
+            const data = await res.json();
+            const rates = data[0].rates;
+            const currenciesSymbols = rates.map((rate:any)=> rate.code)
+            setSymbols(currenciesSymbols);
+        } catch (e) {
+            console.error(e)
+        }
+    }
     const [form, setForm] = useState({
         name: '',
         currency: '',
@@ -15,12 +28,12 @@ export const AddCountry = () => {
                 headers: {
                     'Content-type': 'application/json',
                 },
-                body:JSON.stringify({
+                body: JSON.stringify({
                     ...form
                 })
 
             })
-           const status = res.status;
+            const status = res.status;
             setStatus(status)
             setForm({name: "", currency: ''})
 
@@ -44,11 +57,13 @@ export const AddCountry = () => {
             <input type="text" required maxLength={60} value={form.name}
                    onChange={e => saveForm('name', e.target.value)} onMouseDown={clearInput}/>
             <label>Symbol waluty kraju</label>
-            <input type="text" required value={form.currency} onChange={e => saveForm('currency', e.target.value)}/>
-            <Button text="Dodaj kraj" name="btn" />
+            <select value={form.currency} onChange={e => saveForm('currency', e.target.value)} onClick={currency}>
+                <option>--</option>
+                {symbols.map((symbol, index)=><option key={index} value={symbol}>{symbol}</option>)}
+            </select>
+            <Button text="Dodaj kraj" name="btn"/>
             {status === 200 ? <p className="success">Kraj został dodany pomyślnie</p> : null}
             {status === 400 ? <p className="error">Kraj istnieje, przejdź do dodania wydatku </p> : null}
-            {status === 500 ? <p className="error">Przepraszamy nie dysponujemy przelicznikiem dla tej waluty, proponujemy wpisanie USD lub EUR </p> : null}
         </form>
     </>
 }
