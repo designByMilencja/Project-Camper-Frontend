@@ -18,15 +18,15 @@ export const AddPayment = () => {
     const currencies = countriesData.map((country: CountryEntity) => country.currency);
     const noDoubleCurrencies = [...new Set(currencies)];
 
-    const [status, setStatus] = useState(0)
+    const [status, setStatus] = useState(0);
+
     const saveNewPayment = async (e: SyntheticEvent) => {
         e.preventDefault();
         try {
             const res = await fetch('http://localhost:3001/payment', {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json',
-                },
+                    'Content-type': 'application/json'},
                 body: JSON.stringify({
                     ...form
                 })
@@ -51,8 +51,6 @@ export const AddPayment = () => {
     const chosenDate = new Date(form.boughtAt).toLocaleDateString().replaceAll("/", "");
     const todayDate = new Date().toLocaleDateString().replaceAll("/", "");
     const isCorrect = Number(chosenDate) - Number(todayDate);
-    console.log(isCorrect)
-
     return <>
         <form className="form" onSubmit={saveNewPayment}>
             <h3 className='add'>Dodaj wydatek</h3>

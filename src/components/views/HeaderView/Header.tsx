@@ -9,7 +9,7 @@ export const Header = () => {
         <header>
             <div className="header">
                 <Button text="Wydatki w camperze" to="/" name="header"></Button>
-                <Button text="Panel Admina" name="btn" to="login"/>
+                <Button text="Panel Admina" name="btn" to="admin"/>
             </div>
             <div className="current-info">
                 <h2>Aktualne miejsce: Teneryfa</h2>

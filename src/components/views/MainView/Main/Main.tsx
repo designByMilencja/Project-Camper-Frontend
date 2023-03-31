@@ -4,7 +4,7 @@ import {UserSelect} from "./UserSelect/UserSelect";
 import './Main.css'
 export const MainView = () =>  {
     return <div className="main">
-        <Chart></Chart>
-        <UserSelect></UserSelect>
+        <Chart/>
+        <UserSelect/>
     </div>
 }

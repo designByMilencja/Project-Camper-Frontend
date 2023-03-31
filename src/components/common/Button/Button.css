@@ -10,7 +10,7 @@ button, .btn {
     letter-spacing: .2rem;
 
 }
-a.center {
+a.center, button.center {
     background-color:  rgba(238, 163, 234, 0.24);
     display: block;
     margin: 2rem auto;

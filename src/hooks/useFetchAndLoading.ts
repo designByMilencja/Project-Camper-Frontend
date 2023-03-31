@@ -1,6 +1,8 @@
 import {useEffect, useState} from "react";
-type Data = [any[], boolean]
-export const useFetchAndLoading = (fetchUrl:string): Data => {
+
+type DataReturn = [any[], boolean]
+export const useFetchAndLoading = (fetchUrl: string): DataReturn => {
+
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     useEffect(() => {
@@ -8,10 +10,14 @@ export const useFetchAndLoading = (fetchUrl:string): Data => {
         const fetchData = async () => {
             try {
                 setIsLoading(true)
-                const res = await fetch(fetchUrl);
+                const res = await fetch(fetchUrl, {
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                });
                 const data = await res.json();
-                if(res.status!== 200) {
-                    throw {"message": data.message}
+                if (res.status !== 200) {
+                    throw new Error('Wystąpił bład podczas pobrania danych')
                 }
                 setData(data);
             } catch (err) {
@@ -20,7 +26,7 @@ export const useFetchAndLoading = (fetchUrl:string): Data => {
         };
         fetchData().then(null);
         setIsLoading(false)
-    }, [])
+    }, [fetchUrl])
 
     return [data, isLoading]
 }

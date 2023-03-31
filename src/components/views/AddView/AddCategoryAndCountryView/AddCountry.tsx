@@ -3,6 +3,7 @@ import {Button} from "../../../common/Button/Button";
 
 export const AddCountry = () => {
     const [symbols, setSymbols] = useState([]);
+
     const currency = async () => {
         try {
             const url = 'https://api.nbp.pl/api/exchangerates/tables/A/?format=json';
@@ -26,8 +27,7 @@ export const AddCountry = () => {
             const res = await fetch('http://localhost:3001/country', {
                 method: 'POST',
                 headers: {
-                    'Content-type': 'application/json',
-                },
+                    'Content-type': 'application/json',},
                 body: JSON.stringify({
                     ...form
                 })
