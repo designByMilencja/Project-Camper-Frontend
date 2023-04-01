@@ -1,0 +1,37 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 400px;
+    margin: 2rem auto;
+
+    input, select {
+        padding: 1rem 1.5rem;
+        margin: 1rem auto;
+        width: 30vh;
+        background-color: aliceblue;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    h3.add, h2.add {
+        color: black;
+    }
+
+    .success {
+        text-align: center;
+        border: 1px solid #20c70b;
+        padding: 2rem;
+        color: #20c70b;
+    }
+
+    .error {
+        text-align: center;
+        border: 1px solid #f50517;
+        padding: 2rem;
+        color: #f50517;
+    }
+}
+
+
+
