@@ -1,18 +1,20 @@
-import React, {SyntheticEvent, useState} from "react";
+import React, {useState} from "react";
 import {Button} from "../../../common/Button/Button";
-import '../../../common/Button/Button.css'
-import {useNavigate} from "react-router-dom";
-
-export const AddCategory = () => {
-    const [form, setForm] = useState({
+import '../../../common/Button/Button.scss'
+import {handleErrors} from "../../../../utils";
+interface FormValues {
+    name:string;
+}
+export const AddCategoryView = () => {
+    const [form, setForm] = useState<FormValues>({
         name: ''
     });
-    const token = sessionStorage.getItem('token');
-    const [status, setStatus] = useState(0)
-    const saveNewCategory = async (e: SyntheticEvent) => {
+    const token:Readonly<string|null> = sessionStorage.getItem('token');
+    const [status, setStatus] = useState<number>(0)
+    const saveNewCategory = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const res = await fetch('http://localhost:3001/category', {
+            const res:Response = await fetch('http://localhost:3001/category', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -25,25 +27,19 @@ export const AddCategory = () => {
             const status = res.status;
             setStatus(status)
             setForm({name: ""})
-        } catch (err: any) {
-            console.error(err.message)
+        } catch (err) {
+            handleErrors(err);
         }
     }
     const saveForm = (key: string, value: string) => {
-        setForm(form => ({
-            ...form,
+        setForm(prevState => ({
+            ...prevState,
             [key]: value,
         }))
     }
     const clearInput = () => {
         setStatus(0)
     }
-    const navigate = useNavigate()
-    function logout() {
-        sessionStorage.removeItem('token');
-        navigate('/login')
-    }
-
     return <>
         <form className="form" onSubmit={saveNewCategory}>
             <h3 className='add'>Dodaj kategorię</h3>
@@ -51,9 +47,8 @@ export const AddCategory = () => {
             <input type="text" required minLength={4} maxLength={50} value={form.name}
                    onChange={e => saveForm('name', e.target.value)} onMouseDown={clearInput}/>
             <Button text="Dodaj kategorię" name="btn"></Button>
-            {status === 200 ? <p className="success">Kategoria została dodana pomyślnie</p> : null}
-            {status === 400 ? <p className="error">Kategoria istnieje, przejdź do dodania kraju </p> : null}
+            {status === 200 ? <p className="success" key="success">Kategoria została dodana pomyślnie</p> : null}
+            {status === 400 ? <p className="error" key="error">Kategoria istnieje, przejdź do dodania kraju </p> : null}
         </form>
-        <button className="center" onClick={logout}>Wyloguj</button>
     </>
 }

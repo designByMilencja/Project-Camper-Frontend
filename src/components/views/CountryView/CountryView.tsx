@@ -1,25 +1,26 @@
 import React from "react";
-import '../Table.css'
+import '../Table.scss'
 import {ConverterView} from "../../common/Converter/Converter";
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 import {useParams} from "react-router-dom";
 import {Line} from "../../common/Line/Line";
 import {CountryEntity} from 'types';
+import {CategoryEntity} from 'types';
 import {SumCategoryInCountry} from "../../common/Sum/SumCategoryInCountry";
 import {SumAllCategoryInCountry} from "../../common/Sum/SumAllCategoryInCountry";
-import {Error} from "../ErrorView/Error";
+import {ErrorView} from "../ErrorView/ErrorView";
 
-export const Country = () => {
-    const [categories, isLoading] = useFetchAndLoading('http://localhost:3001/category');
-    const [countriesData] = useFetchAndLoading('http://localhost:3001/country');
-    const allowCountries = countriesData.map((country: CountryEntity) => country.name)
+export const CountryView = () => {
+    const [categoriesData, isLoadingCategories] = useFetchAndLoading<CategoryEntity[] | null, boolean>('http://localhost:3001/category');
+    const [countriesData, isLoadingCountries] = useFetchAndLoading<CountryEntity[] | null, boolean>('http://localhost:3001/country');
+    const allowCountries = Array.isArray(countriesData) ? countriesData.map((country: CountryEntity) => country.name) : [];
     const {country} = useParams();
 
-    const [chosenCountry] = countriesData.filter((chosenCountry:CountryEntity) => chosenCountry.name === country).map(chosenCountry => chosenCountry.id);
+    const [chosenCountry] = Array.isArray(countriesData) ? countriesData.filter((chosenCountry:CountryEntity) => chosenCountry.name === country).map((chosenCountry: CountryEntity) => chosenCountry.id) : [];
 
 
 
-    if (isLoading) return <h1>Trwa ładowanie...</h1>
+    if (isLoadingCountries || isLoadingCategories) return <h1>Trwa ładowanie...</h1>
     if (typeof country === "undefined") {
         return null
     }
@@ -38,7 +39,7 @@ export const Country = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    {categories ? categories.map(category => <tr key={category.id}>
+                    {categoriesData ? categoriesData.map((category:CategoryEntity) => <tr key={category.id}>
                         <td>{category.name}</td>
                         <SumCategoryInCountry idCategory={category.id} idCountry={chosenCountry}/></tr>) : null}
                     </tbody>
@@ -49,7 +50,7 @@ export const Country = () => {
             :
             null}
         {allowCountries.includes(country.toUpperCase()) ?
-            <ConverterView/> : <Error text="Wprowadź poprawną nazwę kraju, aby sprawdzić wydatki"/>
+            <ConverterView/> : <ErrorView text="Wprowadź poprawną nazwę kraju, aby sprawdzić wydatki"/>
            }
     </>
 }

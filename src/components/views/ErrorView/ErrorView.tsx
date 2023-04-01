@@ -1,11 +1,11 @@
 import React from "react";
-import './Error.css';
+import './Error.scss';
 import {Button} from "../../common/Button/Button";
 interface Props {
     text?: string;
 }
 
-export const Error = (props: Props) => {
+export const ErrorView = (props: Props) => {
     return (<>
             <div className="errorBox">
                 <h3>{props.text}</h3>

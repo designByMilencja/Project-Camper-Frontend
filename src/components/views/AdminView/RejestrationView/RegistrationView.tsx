@@ -1,6 +1,6 @@
 import React, {SyntheticEvent, useState} from "react";
 import {Button} from "../../../common/Button/Button";
-import '../../AddView/AddCategoryAndCountryView/Add.css'
+import '../../AddView/AddView.scss'
 import {useForm} from "../../../../hooks/useForm";
 
 interface Admin {
@@ -10,7 +10,7 @@ interface Admin {
     password: string;
 }
 
-export const Registration = () => {
+export const RegistrationView = () => {
     const [admin, setAdmin] = useForm<Admin>({
         name: '',
         email: '',

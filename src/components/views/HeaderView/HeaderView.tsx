@@ -1,10 +1,10 @@
 import React from "react";
-import './Header.css';
+import './HeaderView.scss';
 import {Button} from "../../common/Button/Button";
 import {Datetime} from "./Datetime";
 
 
-export const Header = () => {
+export const HeaderView = () => {
     return <>
         <header>
             <div className="header">

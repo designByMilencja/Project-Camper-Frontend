@@ -1,30 +1,31 @@
-import React, {SyntheticEvent} from "react";
+import React, {useMemo} from "react";
 import {Button} from "../../../common/Button/Button";
-import '../../AddView/AddCategoryAndCountryView/Add.css'
+import '../../AddView/AddView.scss'
 import {useForm} from "../../../../hooks/useForm";
 import {useNavigate} from "react-router-dom";
+import {handleErrors} from "../../../../utils";
 
 interface Admin {
     login: string;
     password: string;
 }
 
-export const Login = () => {
+export const LoginView = () => {
     const [admin, setAdmin] = useForm<Admin>({
         login: '',
         password: '',
     });
+
     const navigate = useNavigate();
-    const sendForm = async (e: SyntheticEvent) => {
+    const body = useMemo(() => JSON.stringify({...admin}), [admin]);
+    const sendForm = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             const response = await fetch('http://localhost:3001/login', {
                 mode: 'cors',
                 method: 'POST',
                 headers: {'Content-Type': 'application/json',},
-                body: JSON.stringify({
-                    ...admin
-                }),
+                body,
             });
 
             if (response.ok) {
@@ -32,10 +33,10 @@ export const Login = () => {
                 sessionStorage.setItem('token', token);
                 navigate('/add/category/country')
             } else {
-                console.log('Invalid email or password');
+                throw new Error('Invalid email or password');
             }
-        } catch (err: any) {
-            console.log(err)
+        } catch (err) {
+           handleErrors(err);
         }
     }
     return <>
