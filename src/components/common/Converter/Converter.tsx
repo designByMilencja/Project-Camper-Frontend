@@ -1,24 +1,40 @@
 import React, {useState} from "react";
-import './Converter.css';
+import './Converter.scss';
 
+interface ExchangeRate {
+    mid: number;
+}
+interface Rates {
+    rates:ExchangeRate[];
+}
 export const ConverterView = () => {
     const [cost, setCost] = useState<string>('');
     const [select, setSelect] = useState<string>('');
     const [price, setPrice] = useState<number | null>(null);
 
-    const clicked = async () => {
-        console.log(cost, select)
+    const fetchExchangeRate = async (select:string): Promise<number|null> => {
         try {
             const url = ` https://api.nbp.pl/api/exchangerates/rates/A/${select}/?format=json`;
             const res = await fetch(url, {mode: 'cors'});
-            const {rates} = await res.json();
-            const exchangeRate = rates[0].mid.toFixed(2);
-            const result = Number(cost) / exchangeRate
-            setPrice(result);
+            const {rates} = await res.json() as Rates;
+            const exchangeRate = rates[0]?.mid.toFixed(2) ?? null;
+            return Number(exchangeRate);
         } catch (e) {
-            console.error(e)
+            console.error(e);
+            return null;
         }
     }
+    const clicked = async () => {
+        const exchangeRate = await fetchExchangeRate(select);
+        if(exchangeRate !== null) {
+            const result = Number(cost) / exchangeRate;
+            setPrice(result);
+        } else {
+            console.error('exchange rate is undefined')
+        }
+
+    }
+
     const clearInput = () => {
         setCost('');
         setSelect('');

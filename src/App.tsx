@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
-import {Home} from "./components/views/HomeView/Home";
+import './App.scss';
+import {HomeView} from "./components/views/HomeView/HomeView";
 
 export function App() {
 
     return (
         <div className="wrapper">
-            <Home></Home>
+            <HomeView></HomeView>
         </div>
     );
 }
