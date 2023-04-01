@@ -5,3 +5,11 @@ form.selectForm {
     align-items: center;
     padding: 1rem;
 }
+input, select {
+    padding: 1rem 1.5rem;
+    margin: 1rem auto;
+    width: 30vh;
+    background-color: aliceblue;
+    text-align: center;
+    text-transform: uppercase;
+}
