@@ -51,6 +51,6 @@ return <>
         {status === 200 ? <p className="success">Zostałeś zarejestrowany, przejdź do logowania</p> : null}
         {status === 400 ? <p className="error">Odmowa rejestracji, sprawdź poprawność danych w formularzu </p> : null}
     </form>
-    <Button text="Przejdź do logowania" to="/login" name="center"/>
+    <Button text="Przejdź do logowania" to="/admin" name="center"/>
 </>
 }
