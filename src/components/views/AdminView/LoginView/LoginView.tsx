@@ -1,4 +1,4 @@
-import React, {useMemo} from "react";
+import React, {useMemo, useState} from "react";
 import {Button} from "../../../common/Button/Button";
 import '../../AddView/AddView.scss'
 import {useForm} from "../../../../hooks/useForm";
@@ -11,6 +11,7 @@ interface Admin {
 }
 
 export const LoginView = () => {
+    const [status, setStatus] = useState<number>(0)
     const [admin, setAdmin] = useForm<Admin>({
         login: '',
         password: '',
@@ -33,7 +34,8 @@ export const LoginView = () => {
                 sessionStorage.setItem('token', token);
                 navigate('/add/category/country')
             } else {
-                throw new Error('Invalid email or password');
+                setStatus(401)
+                throw new Error('Nieprawidłowy login lub hasło')
             }
         } catch (err) {
            handleErrors(err);
@@ -47,6 +49,7 @@ export const LoginView = () => {
             <label>Hasło:</label>
             <input type="password" name="password" required maxLength={50} value={admin.password} onChange={setAdmin}/>
             <Button text="Zaloguj" name="btn"/>
+            { status ===401 ? <p className='error'>Nieprawidłowy login lub hasło</p> : null}
         </form>
         <Button text="Powrót na stronę główną" to="/" name="center"/>
     </>
