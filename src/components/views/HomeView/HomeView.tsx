@@ -10,6 +10,7 @@ import {ErrorView} from "../ErrorView/ErrorView";
 import {AddPaymentView} from "../AddView/AddPaymentView/AddPaymentView";
 import {RegistrationView} from "../AdminView/RejestrationView/RegistrationView";
 import {AdminView} from "../AdminView/AdminView";
+import {Footer} from "../../Footer/Footer";
 
 export const HomeView = () => {
     return <>
@@ -26,6 +27,6 @@ export const HomeView = () => {
             <Route path="*" element={<ErrorView text="Niestety wybrana przez Ciebie ścieżka jeszcze nie istnieje!"/>}>
             </Route>
         </Routes>
-
+        <Footer/>
     </>
 }

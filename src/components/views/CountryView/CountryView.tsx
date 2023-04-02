@@ -1,13 +1,13 @@
 import React from "react";
-import '../Table.scss'
+import './CountryView.scss';
 import {ConverterView} from "../../common/Converter/Converter";
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 import {useParams} from "react-router-dom";
 import {Line} from "../../common/Line/Line";
 import {CountryEntity} from 'types';
 import {CategoryEntity} from 'types';
-import {SumCategoryInCountry} from "../../common/Sum/SumCategoryInCountry";
-import {SumAllCategoryInCountry} from "../../common/Sum/SumAllCategoryInCountry";
+import {SumCategoryInCountry} from "../../Sum/SumCategoryInCountry";
+import {SumAllCategoryInCountry} from "../../Sum/SumAllCategoryInCountry";
 import {ErrorView} from "../ErrorView/ErrorView";
 
 export const CountryView = () => {

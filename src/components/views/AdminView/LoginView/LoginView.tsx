@@ -49,7 +49,7 @@ export const LoginView = () => {
             <label>Hasło:</label>
             <input type="password" name="password" required maxLength={50} value={admin.password} onChange={setAdmin}/>
             <Button text="Zaloguj" name="btn"/>
-            { status ===401 ? <p className='error'>Nieprawidłowy login lub hasło</p> : null}
+            { status === 401 ? <p className='error'>Nieprawidłowy login lub hasło</p> : null}
         </form>
         <Button text="Powrót na stronę główną" to="/" name="center"/>
     </>

@@ -1,5 +1,5 @@
 import React from "react";
-import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
+import {useFetchAndLoading} from "../../hooks/useFetchAndLoading";
 
 interface Props {
     idCategory: string | undefined;
@@ -12,7 +12,7 @@ export const SumCategoryInMonth = ({idCategory, month}: Props): JSX.Element => {
 
     return (<>
         {isLoading ?
-            (<h1>Trwa ładowanie...</h1>)
+            (<td>Trwa ładowanie...</td>)
             :
             (<td> {data ? `${data}PLN` : "-"}</td>)}
     </>)

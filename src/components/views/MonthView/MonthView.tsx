@@ -1,10 +1,10 @@
 import React from "react";
-import '../Table.scss';
+import './MonthView.scss';
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 import {ConverterView} from "../../common/Converter/Converter";
 import {useParams} from "react-router-dom";
-import {SumCategoryInMonth} from "../../common/Sum/SumCategoryInMonth";
-import {SumAllCategoryInMonth} from "../../common/Sum/SumAllCategoryInMonth";
+import {SumCategoryInMonth} from "../../Sum/SumCategoryInMonth";
+import {SumAllCategoryInMonth} from "../../Sum/SumAllCategoryInMonth";
 import {Line} from "../../common/Line/Line";
 import {MonthEntity} from 'types';
 import {CategoryEntity} from 'types';

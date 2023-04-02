@@ -1,5 +1,5 @@
 import React from "react";
-import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
+import {useFetchAndLoading} from "../../hooks/useFetchAndLoading";
 
 interface Props {
     month: string | undefined;
