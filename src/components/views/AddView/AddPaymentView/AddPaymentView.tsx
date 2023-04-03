@@ -66,9 +66,8 @@ export const AddPaymentView = () => {
         sessionStorage.removeItem('token');
         navigate('/login')
     }
-    const chosenDate = new Date(form.boughtAt).toLocaleDateString().split("/").join('');
-    const todayDate = new Date().toLocaleDateString().split("/").join('');
-    const isCorrect = Number(chosenDate) - Number(todayDate);
+    const chosenDate = new Date(form.boughtAt)
+    const todayDate = new Date();
 
     if (isLoadingCategoriesData || isLoadingCountriesData) return <h1>Trwa ładowanie...</h1>
 
@@ -84,7 +83,7 @@ export const AddPaymentView = () => {
                 <option>--</option>
                 {noDoubleCurrencies.map((currency, index) => <option key={index} value={currency}>{currency}</option>)}
             </select>
-            {isCorrect > 0 ? <p className="error">Data płatności nie może być z przyszłości</p> : null}
+            { form.boughtAt !== '' && chosenDate>todayDate ? <p className="error">Data płatności nie może być z przyszłości</p> : null}
             <label>Data zakupu</label>
             <input type="date" required value={form.boughtAt}
                    onChange={e => saveForm('boughtAt', e.target.value)}/>

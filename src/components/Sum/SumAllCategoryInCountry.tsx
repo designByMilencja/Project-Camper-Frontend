@@ -10,8 +10,10 @@ export const SumAllCategoryInCountry = ({idCountry}: Props): JSX.Element => {
     const [data, isLoading] = useFetchAndLoading<number, boolean>(url);
 
     return (<>
-        {isLoading ? (<h1>Trwa ładowanie...</h1> ) :
-        (<h3> {data ? `Podsumowanie miesiąca: ${data}PLN` : null}</h3>) }
+        {isLoading ?
+            <p className="load">Trwa ładowanie...</p>
+            :
+            <h3> {data ? `Podsumowanie miesiąca: ${data}PLN` : null}</h3>}
     </>)
 }
 

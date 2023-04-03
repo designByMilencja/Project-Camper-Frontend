@@ -11,9 +11,9 @@ export const SumAllCategoryInMonth = ({month}: Props): JSX.Element => {
 
     return (<>
         {isLoading ?
-            (<h1>Trwa ładowanie...</h1>)
+            <p className="load">Trwa ładowanie...</p>
             :
-            ( <h3> {data ? `Podsumowanie miesiąca: ${data}PLN` : null}</h3>)}
+            <h3> {data ? `Podsumowanie miesiąca: ${data}PLN` : null}</h3>}
     </>)
 }
 

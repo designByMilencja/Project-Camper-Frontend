@@ -20,7 +20,7 @@ export const CountryView = () => {
 
 
 
-    if (isLoadingCountries || isLoadingCategories) return <h1>Trwa ładowanie...</h1>
+    if (isLoadingCountries || isLoadingCategories) return <p className="load">Trwa ładowanie...</p>
     if (typeof country === "undefined") {
         return null
     }

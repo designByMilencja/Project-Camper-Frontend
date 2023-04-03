@@ -6,6 +6,10 @@ div.errorBox {
     background-position: center;
     background-repeat: no-repeat;
     margin: 5rem auto;
+    h3 {
+        text-align: center;
+        padding: 1rem 1.5rem;
+    }
 
     div.errorImg {
         text-align: center;

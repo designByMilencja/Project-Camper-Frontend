@@ -12,10 +12,9 @@ export const SumCategoryInCountry = ({idCategory, idCountry}: Props): JSX.Elemen
 
     return (<>
         {isLoading ?
-            (<h1>Trwa ładowanie...</h1>)
+            <td>Trwa ładowanie...</td>
             :
-            (<td> {data ? `${data}PLN` : "-"}</td>
-        )}
+            <td> {data ? `${data}PLN` : "-"}</td>}
     </>)
 }
 

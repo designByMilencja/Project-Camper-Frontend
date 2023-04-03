@@ -14,7 +14,7 @@ export const SelectMonth = () => {
         e.preventDefault();
     }
     const urlMonth = `/month/${month}`;
-    if (isLoading) return <h1>Trwa ładowanie...</h1>
+    if (isLoading) return <p className="load">Trwa ładowanie...</p>
     return <>
         <form onSubmit={sendForm} className="selectForm">
             <select name="month" value={month} onChange={changeMonth}>

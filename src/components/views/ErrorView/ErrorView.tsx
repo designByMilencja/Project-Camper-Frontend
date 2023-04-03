@@ -8,7 +8,7 @@ interface Props {
 export const ErrorView = (props: Props) => {
     return (<>
             <div className="errorBox">
-                <h3>{props.text}</h3>
+                <h3 className="error">{props.text}</h3>
                 <div className="errorImg">
                 </div>
             </div>

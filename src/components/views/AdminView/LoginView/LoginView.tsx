@@ -4,6 +4,7 @@ import '../../AddView/AddView.scss'
 import {useForm} from "../../../../hooks/useForm";
 import {useNavigate} from "react-router-dom";
 import {handleErrors} from "../../../../utils";
+import {BackToMainButton} from "../../../common/Button/BackToMainButton";
 
 interface Admin {
     login: string;
@@ -38,7 +39,7 @@ export const LoginView = () => {
                 throw new Error('Nieprawidłowy login lub hasło')
             }
         } catch (err) {
-           handleErrors(err);
+            handleErrors(err);
         }
     }
     return <>
@@ -49,8 +50,8 @@ export const LoginView = () => {
             <label>Hasło:</label>
             <input type="password" name="password" required maxLength={50} value={admin.password} onChange={setAdmin}/>
             <Button text="Zaloguj" name="btn"/>
-            { status === 401 ? <p className='error'>Nieprawidłowy login lub hasło</p> : null}
+            {status === 401 ? <p className='error'>Nieprawidłowy login lub hasło</p> : null}
         </form>
-        <Button text="Powrót na stronę główną" to="/" name="center"/>
+        <BackToMainButton/>
     </>
 }

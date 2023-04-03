@@ -17,7 +17,7 @@ export const MonthView = () => {
     const {month} = useParams();
     const chosenMonth = monthsData?.find((chosenMonth: MonthEntity) => chosenMonth.name === month)?.number?.toString();
 
-    if (isLoadingCategories || isLoadingMonths) return <h1>Trwa ładowanie...</h1>
+    if (isLoadingCategories || isLoadingMonths) return <p className="load">Trwa ładowanie...</p>
     if (!month || !allowMonths.includes(month.toUpperCase())) {
         return <ErrorView/>
     }
