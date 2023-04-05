@@ -3,7 +3,7 @@ import {useFetchAndLoading} from "../../hooks/useFetchAndLoading";
 
 interface Props {
     idCategory: string | undefined;
-    month: string | undefined;
+    month: number | undefined;
 }
 
 export const SumCategoryInMonth = ({idCategory, month}: Props): JSX.Element => {
@@ -14,7 +14,7 @@ export const SumCategoryInMonth = ({idCategory, month}: Props): JSX.Element => {
         {isLoading ?
             <td>Trwa ładowanie...</td>
             :
-            <td> {data ? `${data}PLN` : "-"}</td>}
+            (<td> {data ? `${data}PLN` : "-"}</td>)}
     </>)
 }
 

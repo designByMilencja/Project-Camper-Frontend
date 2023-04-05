@@ -2,7 +2,7 @@ import React from "react";
 import {useFetchAndLoading} from "../../hooks/useFetchAndLoading";
 
 interface Props {
-    month: string | undefined;
+    month: number | undefined;
 }
 
 export const SumAllCategoryInMonth = ({month}: Props): JSX.Element => {
