@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button} from "../../../../common/Button/Button";
 import {CountryEntity} from 'types';
 import {useFetchAndLoading} from "../../../../../hooks/useFetchAndLoading";
-export const SelectCountry = () => {
+export const SelectCountryView = () => {
     const [country, setCountry] = useState<string|undefined>('');
     const [countryData, isLoading] = useFetchAndLoading<CountryEntity|null, boolean>('http://localhost:3001/country');
 

@@ -1,9 +1,9 @@
 import React from "react";
-import './Chart.scss'
+import './ChartView.scss'
 
-export const Chart = () => {
+export const ChartView = () => {
 return <>
-    <div className="chart">
+    <div className="chartPicture">
         <h2>Sprawdź wydatki w podziale na kategorie</h2>
     </div>
     </>

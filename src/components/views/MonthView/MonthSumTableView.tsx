@@ -7,7 +7,7 @@ interface Props {
     chosenMonth: number | undefined;
 }
 
-export const CategorySumTable = ({categoriesData, chosenMonth}: Props): JSX.Element => {
+export const MonthSumTableView = ({categoriesData, chosenMonth}: Props): JSX.Element => {
     return (
         <table>
             <thead>

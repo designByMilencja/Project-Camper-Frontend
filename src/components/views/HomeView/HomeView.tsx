@@ -1,12 +1,12 @@
 import React from "react";
+import {Route, Routes} from "react-router-dom";
 import {HeaderView} from "../HeaderView/HeaderView";
 import {MainView} from "../MainView/MainView";
-import {Route, Routes} from "react-router-dom";
 import {MonthView} from "../MonthView/MonthView";
-import {AddCategoryAndCountryView} from "../AddView/AddCategoryAndCountryView/AddCategoryAndCountryView";
 import {CountryView} from "../CountryView/CountryView";
 import {ErrorView} from "../ErrorView/ErrorView";
 import {AddPaymentView} from "../AddView/AddPaymentView/AddPaymentView";
+import {AddCategoryAndCountryView} from "../AddView/AddCategoryAndCountryView/AddCategoryAndCountryView";
 import {RegistrationView} from "../AdminView/RejestrationView/RegistrationView";
 import {AdminView} from "../AdminView/AdminView";
 import {Footer} from "../../Footer/Footer";

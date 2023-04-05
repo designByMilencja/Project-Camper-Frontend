@@ -2,8 +2,8 @@ import React, { useState} from "react";
 import {Button} from "../../../../common/Button/Button";
 import {MonthEntity} from 'types';
 import {useFetchAndLoading} from "../../../../../hooks/useFetchAndLoading";
-import '../UserSelect.scss'
-export const SelectMonth = () => {
+import '../UserSelectView.scss'
+export const SelectMonthView = () => {
     const [month, setMonth] = useState<string|undefined>('');
     const [monthsData, isLoading]= useFetchAndLoading<MonthEntity|null,boolean>('http://localhost:3001/month');
 

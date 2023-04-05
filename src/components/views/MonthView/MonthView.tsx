@@ -1,14 +1,14 @@
 import React from "react";
 import './MonthView.scss';
+import {MonthEntity, CategoryEntity} from 'types';
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 import {useParams} from "react-router-dom";
-import {MonthEntity, CategoryEntity} from 'types';
 import {SumAllCategoryInMonth} from "../../Sum/SumAllCategoryInMonth";
-import {CategorySumTable} from "./CategorySumTable";
+import {MonthSumTableView} from "./MonthSumTableView";
 import {ConverterView} from "../../common/Converter/Converter";
 import {Line} from "../../common/Line/Line";
 import {ErrorView} from "../ErrorView/ErrorView";
-import {LoadingView} from "../LoadingView";
+import {LoadingView} from "../LoadingView/LoadingView";
 
 export const MonthView = () => {
     const {month} = useParams();
@@ -23,7 +23,7 @@ export const MonthView = () => {
             <>
                 <h3>Wydatki 2023 💰Miesiąc: {month.toUpperCase()}</h3>
                 <div>
-                    <CategorySumTable categoriesData={categoriesData} chosenMonth={chosenMonth}/>
+                    <MonthSumTableView categoriesData={categoriesData} chosenMonth={chosenMonth}/>
                     <SumAllCategoryInMonth month={chosenMonth}/>
                     <Line/>
                 </div>

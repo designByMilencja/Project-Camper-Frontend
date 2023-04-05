@@ -1,8 +1,7 @@
 import React from "react";
 import './HeaderView.scss';
 import {Button} from "../../common/Button/Button";
-import {Datetime} from "./Datetime";
-
+import {Datetime} from "../../common/Datetime";
 
 export const HeaderView = () => {
     return <>
