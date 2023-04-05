@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 import {Button} from "../../../common/Button/Button";
 import {useFetchAndLoading} from "../../../../hooks/useFetchAndLoading";
 import {CountryEntity} from 'types';
@@ -14,8 +14,9 @@ interface FormValues {
     idCountry: string
     idCategory: string;
 }
+
 export const AddPaymentView = () => {
-    const token:Readonly<string|null> = sessionStorage.getItem('token');
+    const token: Readonly<string | null> = sessionStorage.getItem('token');
     const [form, setForm] = useState<FormValues>({
         cost: 0,
         currency: '',
@@ -39,7 +40,8 @@ export const AddPaymentView = () => {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
-                    'Content-type': 'application/json'},
+                    'Content-type': 'application/json'
+                },
                 body: JSON.stringify({
                     ...form
                 })
@@ -62,10 +64,12 @@ export const AddPaymentView = () => {
         setStatus(0);
     }
     const navigate = useNavigate()
+
     function logout() {
         sessionStorage.removeItem('token');
         navigate('/login')
     }
+
     const chosenDate = new Date(form.boughtAt)
     const todayDate = new Date();
 
@@ -79,32 +83,38 @@ export const AddPaymentView = () => {
             <input type="number" maxLength={999999} required value={form.cost}
                    onChange={e => saveForm('cost', e.target.value)} onMouseDown={clearInput}/>
             <label>Waluta</label>
-            <select value={form.currency} onChange={e => saveForm('currency', e.target.value)}>
+            <select value={form.currency} onChange={e => saveForm('currency', e.target.value)} required>
                 <option>--</option>
                 {noDoubleCurrencies.map((currency, index) => <option key={index} value={currency}>{currency}</option>)}
             </select>
-            { form.boughtAt !== '' && chosenDate>todayDate ? <p className="error">Data płatności nie może być z przyszłości</p> : null}
+            {form.boughtAt !== '' && chosenDate > todayDate ?
+                <p className="error">Data płatności nie może być z przyszłości</p> : null}
             <label>Data zakupu</label>
-            <input type="date" required value={form.boughtAt}
+            <input aria-required type="date" required value={form.boughtAt}
                    onChange={e => saveForm('boughtAt', e.target.value)}/>
             <label>Miejsce zakupu</label>
             <select required value={form.idCountry} onChange={e => saveForm('idCountry', e.target.value)}>
                 <option>--</option>
                 {Array.isArray(countriesData) ? countriesData.map((country: CountryEntity) => <option key={country.name}
-                                                                       value={country.id}>{country.name}</option>) : []}
+                                                                                                      value={country.id}>{country.name}</option>) : []}
             </select>
             <label>Kategoria zakupu</label>
-            <select required name="category" value={form.idCategory} onChange={e => saveForm('idCategory', e.target.value)}>
+            <select required name="category" value={form.idCategory}
+                    onChange={e => saveForm('idCategory', e.target.value)}>
                 <option>--</option>
-                {Array.isArray(categoriesData) ? categoriesData.map((category: CategoryEntity) => <option key={category.id}
-                                                                          value={category.id}>{category.name}</option>) : []}
+                {Array.isArray(categoriesData) ? categoriesData.map((category: CategoryEntity) => <option
+                    key={category.id}
+                    value={category.id}>{category.name}</option>) : []}
             </select>
             <Button text="Dodaj wydatek" name="btn"/>
             {status === 200 ? <p className="success">Wydatek został dodany pomyślnie</p> : null}
             {status === 400 ?
                 <p className="error">Wydatek nie został dodany, sprawdź poprawność danych w formularzu </p> : null}
+            {status === 401 ?
+                <p className="error">Wydatek nie został dodany, aby dodać wydatek musisz się zalogować </p> : null}
         </form>
         <BackToMainButton/>
-        <button className="center" onClick={logout}>Wyloguj</button>
+        {status !== 401 ? <button className="center" onClick={logout}>Wyloguj</button> :  <Button text="Przejdź do logowania" to="/admin" name="center"/>}
+
     </>
 }
