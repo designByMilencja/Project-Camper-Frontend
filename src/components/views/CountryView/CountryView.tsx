@@ -1,14 +1,15 @@
 import React from "react";
-import './CountryView.scss';
-import {CountryEntity,CategoryEntity} from 'types';
+import "../../../styles/table.scss";
+import {CountryEntity, CategoryEntity} from 'types';
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 import {useParams} from "react-router-dom";
-import {ConverterView} from "../../common/Converter/Converter";
-import {SumAllCategoryInCountry} from "../../Sum/SumAllCategoryInCountry";
+import {ConverterView} from "../../feature/Converter/Converter";
+import {SumAllCategoryInCountry} from "../../feature/Sum/SumAllCategoryInCountry";
 import {CountrySumTableView} from "./CountrySumTableView";
 import {Line} from "../../common/Line/Line";
 import {ErrorView} from "../ErrorView/ErrorView";
 import {LoadingView} from "../LoadingView/LoadingView";
+import {Subtitle} from "../../common/Subtitle/Subtitle";
 
 export const CountryView = () => {
     const {country} = useParams();
@@ -19,17 +20,18 @@ export const CountryView = () => {
 
     if (isLoadingCountries || isLoadingCategories) return <LoadingView/>
     return (<>
-        {country && allowCountries.includes(country.toUpperCase()) ?
-            <>
-                <h3>Wydatki 2023 💰Kraj: {country.toUpperCase()}</h3>
-                <div>
-                    <CountrySumTableView categoriesData={categoriesData} chosenCountry={chosenCountry}/>
-                    <SumAllCategoryInCountry idCountry={chosenCountry}/>
-                    <Line/>
-                </div>
-                <ConverterView/>
-            </>
-            :
-            <ErrorView text="Wprowadź poprawną nazwę kraju, aby sprawdzić wydatki"/>}
-    </>)
-}
+            {country && allowCountries.includes(country.toUpperCase()) ?
+                <>
+                    <Subtitle text={`Wydatki 2023 💰Kraj: ${country.toUpperCase()}`}/>
+                    <div>
+                        <CountrySumTableView categoriesData={categoriesData} chosenCountry={chosenCountry}/>
+                        <SumAllCategoryInCountry idCountry={chosenCountry}/>
+                        <Line/>
+                    </div>
+                    <ConverterView/>
+                </>
+                :
+                <ErrorView text="Wprowadź poprawną nazwę kraju, aby sprawdzić wydatki"/>}
+        </>
+    );
+};
