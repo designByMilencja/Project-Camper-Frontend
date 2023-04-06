@@ -2,6 +2,7 @@ import React, {SyntheticEvent, useState} from "react";
 import {Button} from "../../../common/Button/Button";
 import '../../AddView/AddView.scss'
 import {useForm} from "../../../../hooks/useForm";
+import {InputField} from "../../../common/InputField/InputField";
 
 interface Admin {
     name: string;
@@ -39,14 +40,10 @@ export const RegistrationView = () => {
 return <>
     <form className="form" onSubmit={sendForm}>
         <h3 className="add">Formularz rejestracji</h3>
-        <label>Imię:</label>
-        <input type="text" required maxLength={50} minLength={3} name="name" value={admin.name} onChange={setAdmin}/>
-        <label>Email:</label>
-        <input type="email" required maxLength={50} name="email" value={admin.email} onChange={setAdmin}/>
-        <label>Login:</label>
-        <input type="text" required maxLength={40} name="login" value={admin.login} onChange={setAdmin}/>
-        <label>Hasło:</label>
-        <input type="password" name="password" required maxLength={40} value={admin.password} onChange={setAdmin}/>
+        <InputField label='Imię:' type="text" name="name"  value={admin.name} minLength={3} maxLength={50} onChange={setAdmin} required/>
+        <InputField label="Email:" type="email" name="email" value={admin.email} minLength={5} maxLength={50} onChange={setAdmin} required/>
+        <InputField label="Login:" type="text" name="login" value={admin.login} minLength={5} maxLength={40} onChange={setAdmin} required/>
+        <InputField label="Hasło:" type="password" name="password" value={admin.password} minLength={8} maxLength={40} onChange={setAdmin} required/>
         <Button text="Zarejestruj" name="btn"/>
         {status === 200 ? <p className="success">Zostałeś zarejestrowany, przejdź do logowania</p> : null}
         {status === 400 ? <p className="error">Odmowa rejestracji, sprawdź poprawność danych w formularzu </p> : null}
