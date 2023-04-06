@@ -6,7 +6,8 @@ interface Props {
     name: string;
     text: string;
     to?: string;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button = ({to, text, name}: Props) => (to ? <Link className={name} to={to}>{text}</Link> :
-    <button className={name}>{text}</button>)
+export const Button = ({to, text, name,onClick}: Props) => (to ? <Link className={name} to={to}>{text}</Link> :
+    <button className={name} onClick={onClick}>{text}</button>)

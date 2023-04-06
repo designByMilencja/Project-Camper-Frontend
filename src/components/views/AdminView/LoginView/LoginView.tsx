@@ -3,8 +3,9 @@ import {Button} from "../../../common/Button/Button";
 import '../../AddView/AddView.scss'
 import {useForm} from "../../../../hooks/useForm";
 import {useNavigate} from "react-router-dom";
-import {handleErrors} from "../../../../utils";
+import {handleErrors} from "../../../../utils/handleErrors";
 import {BackToMainButton} from "../../../common/Button/BackToMainButton";
+import {InputField} from "../../../common/InputField/InputField";
 
 interface Admin {
     login: string;
@@ -45,10 +46,8 @@ export const LoginView = () => {
     return <>
         <form className="form" onSubmit={sendForm}>
             <h3 className="add">Formularz logowania</h3>
-            <label>Login:</label>
-            <input type="text" required maxLength={50} name="login" value={admin.login} onChange={setAdmin}/>
-            <label>Hasło:</label>
-            <input type="password" name="password" required maxLength={50} value={admin.password} onChange={setAdmin}/>
+            <InputField label="Login:" type="text" name="login" value={admin.login} onChange={setAdmin} required/>
+            <InputField label="Hasło:" type="password" name="password" value={admin.password} onChange={setAdmin} required/>
             <Button text="Zaloguj" name="btn"/>
             {status === 401 ? <p className='error'>Nieprawidłowy login lub hasło</p> : null}
         </form>
