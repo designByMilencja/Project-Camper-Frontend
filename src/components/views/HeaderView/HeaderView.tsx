@@ -8,7 +8,7 @@ export const HeaderView = () => {
     return <>
         <header>
             <Title text="Wydatki w camperze"/>
-            <Button text="Logowanie" name="btn" to="admin"/>
+            <Button text="Logowanie" name="menu" to="admin"/>
             <CurrentInfoView/>
         </header>
     </>

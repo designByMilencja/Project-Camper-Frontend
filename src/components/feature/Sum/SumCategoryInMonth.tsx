@@ -1,5 +1,7 @@
 import React from "react";
-import {useFetchAndLoading} from "../../hooks/useFetchAndLoading";
+import "./Sum.scss";
+import config from "../../../config/config.json";
+import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 
 interface Props {
     idCategory: string | undefined;
@@ -7,14 +9,15 @@ interface Props {
 }
 
 export const SumCategoryInMonth = ({idCategory, month}: Props): JSX.Element => {
-    const url = `http://localhost:3001/payment/sum/month/${idCategory}/${month}`
+    const {sumCategory_url} = config;
+    const url = `${sumCategory_url}/${idCategory}/${month}`;
     const [data, isLoading] = useFetchAndLoading<number, boolean>(url);
 
     return (<>
         {isLoading ?
             <td>Trwa ładowanie...</td>
             :
-            (<td> {data ? `${data}PLN` : "-"}</td>)}
+            (<td> {data ? `${data.toLocaleString('pl-PL', {minimumFractionDigits: 2})}PLN` : "-"}</td>)}
     </>)
 }
 

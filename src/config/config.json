@@ -2,6 +2,12 @@
   "category_url": "http://localhost:3001/category",
   "payment_url": "http://localhost:3001/payment",
   "country_url": "http://localhost:3001/country",
+  "month_url": "http://localhost:3001/month",
+  "verify_url": "http://localhost:3001/registration/verify/:key",
   "registration_url": "http://localhost:3001/registration",
-  "apiNBP_url": "https://api.nbp.pl/api/exchangerates/tables/A/?format=json"
+  "apiNBP_url": "https://api.nbp.pl/api/exchangerates/tables/A/?format=json",
+  "sumAllMonths_url": "http://localhost:3001/payment/sum/all/months",
+  "sumAllCategories_url": "http://localhost:3001/payment/sum/all/categories",
+  "sumCountry_url": "http://localhost:3001/payment/sum/country",
+  "sumCategory_url": "http://localhost:3001/payment/sum/month"
 }

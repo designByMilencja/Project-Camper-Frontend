@@ -1,10 +1,15 @@
 import React, {useState} from "react";
-import {Button} from "../../../../common/Button/Button";
 import {CountryEntity} from 'types';
+import config from "../../../../../config/config.json";
 import {useFetchAndLoading} from "../../../../../hooks/useFetchAndLoading";
+import {Button} from "../../../../common/Button/Button";
+import {LoadingView} from "../../../LoadingView/LoadingView";
+import {SelectCountry} from "./SelectCountry/SelectCountry";
+
 export const SelectCountryView = () => {
-    const [country, setCountry] = useState<string|undefined>('');
-    const [countryData, isLoading] = useFetchAndLoading<CountryEntity|null, boolean>('http://localhost:3001/country');
+    const [country, setCountry] = useState<string>('');
+    const {country_url} = config;
+    const [countriesData, isLoadingCountriesData] = useFetchAndLoading<CountryEntity[] | null, boolean>(country_url);
 
     const changeCountry = (e: React.ChangeEvent<HTMLSelectElement>): void => {
         setCountry(e.target.value)
@@ -13,15 +18,11 @@ export const SelectCountryView = () => {
         e.preventDefault();
     }
     const urlCountry = `/country/${country}`;
-    if (isLoading) return <p className="load">Trwa ładowanie...</p>
-
+    if (isLoadingCountriesData) return <LoadingView/>
     return <>
         <form onSubmit={sendForm} className="selectForm">
-            <select name="country" onChange={changeCountry} value={country}>
-                <option value=""> - kraj -</option>
-                {Array.isArray(countryData) ? countryData.map((country: CountryEntity) => <option key={country.id} value={country.name}>{country.name}</option>) : []}
-            </select>
-            <Button text="sprawdź" to={urlCountry} name="select" ></Button>
+            <SelectCountry country={country} changeCountry={changeCountry} countriesData={countriesData}/>
+            <Button text="sprawdź" to={urlCountry} name="select"></Button>
         </form>
     </>;
 }

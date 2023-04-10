@@ -22,12 +22,10 @@ export const CountryView = () => {
     return (<>
             {country && allowCountries.includes(country.toUpperCase()) ?
                 <>
-                    <Subtitle text={`Wydatki 2023 💰Kraj: ${country.toUpperCase()}`}/>
-                    <div>
-                        <CountrySumTableView categoriesData={categoriesData} chosenCountry={chosenCountry}/>
-                        <SumAllCategoryInCountry idCountry={chosenCountry}/>
-                        <Line/>
-                    </div>
+                    <Subtitle color="black" text={`Wydatki 2023 💰Kraj: ${country.toUpperCase()}`}/>
+                    <CountrySumTableView categoriesData={categoriesData} chosenCountry={chosenCountry}/>
+                    <SumAllCategoryInCountry idCountry={chosenCountry}/>
+                    <Line/>
                     <ConverterView/>
                 </>
                 :

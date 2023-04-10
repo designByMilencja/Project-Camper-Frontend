@@ -9,7 +9,8 @@ import {AddPaymentView} from "../AddView/AddPaymentView/AddPaymentView";
 import {AddCategoryAndCountryView} from "../AddView/AddCategoryAndCountryView/AddCategoryAndCountryView";
 import {RegistrationView} from "../AdminView/RejestrationView/RegistrationView";
 import {AdminView} from "../AdminView/AdminView";
-import {Footer} from "../../Footer/Footer";
+import {FooterView} from "../FooterView/FooterView";
+import {VerifyView} from "../VerifyView/VerifyView";
 
 export const HomeView = () => {
     return <>
@@ -19,12 +20,13 @@ export const HomeView = () => {
             <Route path="/month/:month" element={<MonthView/>}> </Route>
             <Route path="/country/:country" element={<CountryView/>}> </Route>
             <Route path="/admin" element={<AdminView/>}> </Route>
+            <Route path="/verify" element={<VerifyView/>}> </Route>
             <Route path="/registration" element={<RegistrationView/>}> </Route>
             <Route path="/add/category/country" element={<AddCategoryAndCountryView/>}> </Route>
             <Route path="/add/payment" element={<AddPaymentView/>}> </Route>
-            <Route path="*" element={<ErrorView text="Niestety wybrana przez Ciebie ścieżka jeszcze nie istnieje!"/>}>
+            <Route path="*" element={<ErrorView text="Niestety wybrana ścieżka nie istnieje!"/>}>
             </Route>
         </Routes>
-        <Footer/>
+        <FooterView/>
     </>
 }

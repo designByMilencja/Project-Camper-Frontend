@@ -1,20 +1,17 @@
 import React, {useMemo, useState} from "react";
-import {Button} from "../../../common/Button/Button";
+import {LoginEntity} from "types";
 import '../../AddView/AddView.scss'
 import {useForm} from "../../../../hooks/useForm";
 import {useNavigate} from "react-router-dom";
 import {handleErrors} from "../../../../utils/handleErrors";
 import {BackToMainButton} from "../../../common/Button/BackToMainButton";
+import {Button} from "../../../common/Button/Button";
 import {InputField} from "../../../common/InputField/InputField";
-
-interface Admin {
-    login: string;
-    password: string;
-}
+import {SubSubtitle} from "../../../common/SubSubtitle/SubSubtitle";
 
 export const LoginView = () => {
     const [status, setStatus] = useState<number>(0)
-    const [admin, setAdmin] = useForm<Admin>({
+    const [admin, setAdmin] = useForm<LoginEntity>({
         login: '',
         password: '',
     });
@@ -45,7 +42,7 @@ export const LoginView = () => {
     }
     return <>
         <form className="form" onSubmit={sendForm}>
-            <h3 className="add">Formularz logowania</h3>
+            <SubSubtitle text="Formularz logowania"/>
             <InputField label="Login:" type="text" name="login" value={admin.login} onChange={setAdmin} required/>
             <InputField label="Hasło:" type="password" name="password" value={admin.password} onChange={setAdmin} required/>
             <Button text="Zaloguj" name="btn"/>

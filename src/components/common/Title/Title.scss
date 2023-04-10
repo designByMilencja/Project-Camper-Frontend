@@ -1,4 +1,8 @@
+@import "../../../styles/colors";
 .title {
-  color: aliceblue;
+  color: $light-color;
+  padding: 1rem 1.5rem;
+  font-weight: bold;
   cursor: pointer;
+  letter-spacing: 2px;
 }

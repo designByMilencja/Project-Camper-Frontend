@@ -1,38 +1,30 @@
-a {
-    cursor: pointer;
-}
+@import "../../../styles/colors";
 button {
     padding: 1rem 1.5rem;
     margin: 1rem;
-    background-color: rgba(238, 163, 234, 0.10);
+    background-color: $background-color;
     border-radius: 12px;
     cursor: pointer;
     letter-spacing: .2rem;
-
 }
-a.center, button.center {
-    background-color:  rgba(238, 163, 234, 0.24);
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .2rem;
+}
+a.center {
+    background-color:  $background-color;
     display: block;
     margin: 2rem auto;
     width: 100%;
     padding: 12px;
-    text-decoration: none;
-    text-transform: uppercase;
     text-align: center;
 }
-a.btn {
-    text-decoration: none;
-    text-transform: uppercase;
-}
-a.header {
-    color: aliceblue;
-    text-decoration: none;
-    font-size: 3.2rem;
-    font-weight: bold;
-    margin: 3rem;
+a.menu {
+    position: absolute;
+    top: 5%;
+    right: 10%;
 }
 a.select {
     margin: 0 auto;
-    text-transform: uppercase;
-    text-decoration: none;
 }

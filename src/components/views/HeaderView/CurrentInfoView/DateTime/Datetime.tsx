@@ -1,4 +1,6 @@
+import React from "react";
 import {useEffect, useState} from "react";
+import {Subtitle} from "../../../../common/Subtitle/Subtitle";
 
 export const Datetime = () => {
     const [datetime, setDatetime] = useState<Date>(new Date());
@@ -8,6 +10,6 @@ export const Datetime = () => {
         }, 1000)
     })
     return (
-        <>{datetime.toLocaleString()}</>
+        <Subtitle text={datetime.toLocaleString()}/>
     )
 }

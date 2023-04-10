@@ -1,30 +1,24 @@
 import React, {useState} from "react";
-import {CountryEntity, CategoryEntity} from 'types';
-import config from "../../../../utils/config.json";
+import {CountryEntity, CategoryEntity, PaymentEntity} from 'types';
+import config from "../../../../config/config.json";
 import {handleErrors} from "../../../../utils/handleErrors";
 import {useFetchAndLoading} from "../../../../hooks/useFetchAndLoading";
 import {Button} from "../../../common/Button/Button";
 import {BackToMainButton} from "../../../common/Button/BackToMainButton";
 import {LoadingView} from "../../LoadingView/LoadingView";
 import {InputField} from "../../../common/InputField/InputField";
-import {SelectCurrencyFromDatabase} from "../../../common/Select/SelectCurrencyFromDatabase";
-import {SelectCountry} from "../../../common/Select/SelectCountry";
-import {SelectCategory} from "../../../common/Select/SelectCategory";
-import {ErrorMessage} from "../../../common/ErrorMesage/ErrorMessage";
-import {StatusResponse} from "../../../common/StatusResponse/StatusResponse";
+import {SelectCurrencyFromDatabase} from "./SelectCurrencyFromDatabase/SelectCurrencyFromDatabase";
+import {SelectCountry} from "./SelectCountry/SelectCountry";
+import {SelectCategory} from "./SelectCategory/SelectCategory";
+import {StatusResponse} from "../../../feature/StatusResponse/StatusResponse";
 import {LogoutButton} from "../../../common/Button/LogoutButton";
-
-interface FormValues {
-    cost: number;
-    currency: string;
-    boughtAt: string;
-    idCountry: string
-    idCategory: string;
-}
+import {ErrorMessage} from "../../../feature/ErrorMesage/ErrorMessage";
+import {SubSubtitle} from "../../../common/SubSubtitle/SubSubtitle";
+import {Subtitle} from "../../../common/Subtitle/Subtitle";
 
 export const AddPaymentView = () => {
     const token: Readonly<string | null> = sessionStorage.getItem('token');
-    const [form, setForm] = useState<FormValues>({
+    const [form, setForm] = useState<PaymentEntity>({
         cost: 0,
         currency: '',
         boughtAt: '',
@@ -73,38 +67,24 @@ export const AddPaymentView = () => {
 
     if (isLoadingCategoriesData || isLoadingCountriesData) return <LoadingView/>
     return (<>
+        <Subtitle color="black" text="Dodaj płatność, by móc ewidencjonowac swoje wydatki 💰"/>
         <form className="form" onSubmit={saveNewPayment}>
-            <h3 className='add'>Dodaj wydatek</h3>
+            <SubSubtitle text="Dodaj wydatek"/>
             {form.cost > 999999 ? <ErrorMessage message="Płatność nie może być wyższa niż milion złotych"/> : null}
-            <InputField label="Kwota"
-                        type="number"
-                        name="cost"
-                        value={form.cost}
-                        onChange={e => saveForm('cost', e.target.value)}
-                        maxLength={999999}
-                        onMouseDown={clearInput}
+            <InputField label="Kwota" type="number" name="cost" value={form.cost}
+                        onChange={e => saveForm('cost', e.target.value)} min = {1} maxLength={999999} onMouseDown={clearInput}
                         required/>
-            <SelectCurrencyFromDatabase form={form}
-                                        noDoubleCurrencies={noDoubleCurrencies}
-                                        saveForm={saveForm}/>
-            {form.boughtAt !== '' && chosenDate > todayDate ? <ErrorMessage message="Data płatności nie może być z przyszłości"/> : null}
-            <InputField label="Data zakupu"
-                        type="date"
-                        name="date"
-                        value={form.boughtAt}
-                        onChange={e => saveForm('boughtAt', e.target.value)}
-                        required/>
-            <SelectCountry form={form}
-                           countriesData={countriesData}
-                           saveForm={saveForm}/>
-            <SelectCategory form={form}
-                            categoriesData={categoriesData}
-                            saveForm={saveForm}/>
+            <SelectCurrencyFromDatabase form={form} noDoubleCurrencies={noDoubleCurrencies} saveForm={saveForm}/>
+            {form.boughtAt !== '' && chosenDate > todayDate ?
+                <ErrorMessage message="Data płatności nie może być z przyszłości"/> : null}
+            <InputField label="Data zakupu" type="date" name="date" value={form.boughtAt}
+                        onChange={e => saveForm('boughtAt', e.target.value)} required/>
+            <SelectCountry form={form} countriesData={countriesData} saveForm={saveForm}/>
+            <SelectCategory form={form} categoriesData={categoriesData} saveForm={saveForm}/>
             <Button text="Dodaj wydatek" name="btn"/>
-            <StatusResponse code={status}/>
-            </form>
-            <BackToMainButton/>
-            {status !== 401 ? <LogoutButton/> :
-                <Button text="Przejdź do logowania" to="/admin" name="center"/>}
-        </>)
-        }
+            <StatusResponse code={status} keyCategory="payment"/>
+            {status !== 401 ? <LogoutButton/> : <Button text="Przejdź do logowania" to="/admin" name="center"/>}
+        </form>
+        <BackToMainButton/>
+    </>)
+}

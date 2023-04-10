@@ -7,6 +7,7 @@ interface Props {
     value: string | number;
     maxLength?: number;
     minLength?: number;
+    min?: number;
     required?: boolean;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onMouseDown?: (e:React.ChangeEvent<HTMLInputElement>) => void;

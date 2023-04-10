@@ -1,19 +1,22 @@
 import React from "react";
-import {useFetchAndLoading} from "../../hooks/useFetchAndLoading";
+import "./Sum.scss";
+import config from "../../../config/config.json";
+import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 
 interface Props {
     month: number | undefined;
 }
 
 export const SumAllCategoryInMonth = ({month}: Props): JSX.Element => {
-    const url = `http://localhost:3001/payment/sum/all/months/${month}`
+    const {sumAllMonths_url} = config;
+    const url = `${sumAllMonths_url}/${month}`;
     const [data, isLoading] = useFetchAndLoading<number, boolean>(url);
 
     return (<>
         {isLoading ?
             <p className="load">Trwa ładowanie...</p>
             :
-            <h3> {data ? `Podsumowanie miesiąca: ${data}PLN` : null}</h3>}
+            <p className="summary"> {data ? `Podsumowanie miesiąca: ${data}PLN` : null}</p>}
     </>)
 }
 

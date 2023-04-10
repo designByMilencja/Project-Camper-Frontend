@@ -1,5 +1,6 @@
+@import "../../../styles/colors";
 main {
-    background: rgba(54, 105, 147, 0.42);
+    background: $main-color;
 .main {
     display: flex;
     justify-content: space-evenly;

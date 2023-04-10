@@ -1,26 +1,28 @@
-import React, { useState} from "react";
-import {Button} from "../../../../common/Button/Button";
+import React, {useState} from "react";
+import '../UserSelectView.scss'
+import config from "../../../../../config/config.json";
 import {MonthEntity} from 'types';
 import {useFetchAndLoading} from "../../../../../hooks/useFetchAndLoading";
-import '../UserSelectView.scss'
+import {Button} from "../../../../common/Button/Button";
+import {SelectMonth} from "./SelectMonth/SelectMonth";
+import {LoadingView} from "../../../LoadingView/LoadingView";
+
 export const SelectMonthView = () => {
-    const [month, setMonth] = useState<string|undefined>('');
-    const [monthsData, isLoading]= useFetchAndLoading<MonthEntity|null,boolean>('http://localhost:3001/month');
+    const [month, setMonth] = useState<string>('');
+    const {month_url} = config;
+    const [monthsData, isLoadingMonthData] = useFetchAndLoading<MonthEntity[] | null, boolean>(month_url);
 
     const changeMonth = (e: React.ChangeEvent<HTMLSelectElement>): void => {
         setMonth(e.target.value)
     };
-    const sendForm = (e: React.FormEvent<HTMLFormElement>):void => {
+    const sendForm = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
     }
     const urlMonth = `/month/${month}`;
-    if (isLoading) return <p className="load">Trwa ładowanie...</p>
+    if (isLoadingMonthData) return <LoadingView/>
     return <>
         <form onSubmit={sendForm} className="selectForm">
-            <select name="month" value={month} onChange={changeMonth}>
-                <option value=""> - miesiąc -</option>
-                {Array.isArray(monthsData) ? monthsData.map((month: MonthEntity) => <option key={month.id} value={month.name}>{month.name}</option>) : []}
-            </select>
+            <SelectMonth month={month} changeMonth={changeMonth} monthsData={monthsData}/>
             <Button text="sprawdź" to={urlMonth} name="select"></Button>
         </form>
     </>;

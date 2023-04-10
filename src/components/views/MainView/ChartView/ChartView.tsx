@@ -1,10 +1,11 @@
 import React from "react";
+import img from "../../../../img/home/bar-chart.png"
 import './ChartView.scss'
 
 export const ChartView = () => {
 return <>
     <div className="chartPicture">
-        <h2>Sprawdź wydatki w podziale na kategorie</h2>
+        <img src={img} alt="Wykresy słupkowe zademonstrowane jako model" />
     </div>
     </>
 }
