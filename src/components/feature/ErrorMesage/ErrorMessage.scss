@@ -1,0 +1,7 @@
+@import "../../../styles/colors";
+.error {
+  text-align: center;
+  border: 1px solid $error-color;
+  padding: 2rem;
+  color: $error-color;
+}

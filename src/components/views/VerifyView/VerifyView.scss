@@ -1,0 +1,15 @@
+@import "../../../styles/colors";
+
+.verifyView {
+  text-align: center;
+  background-color: $main-color;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  img {
+    width: 10vw;
+    margin: 0 auto;
+  }
+}

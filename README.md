@@ -1,28 +1,41 @@
 # Project Camper Frontend 🚐
 
+This is my individual project for Mega Kurs. The idea and code is my creation.
+
 ## Table of Contents
 * [General info](#general-info)
-* [Demo and Screenshots](#demo-and-screenshots)
+* [Screenshots](#screenshots)
+
 * [Features](#features)
 * [Technologies used](#technologies-used)
 * [Usage](#usage)
 * [Contact](#contact)
 
 ## General Info
-The main purpose of my application is to record my daily expenses during travelling by camper van. On the basis of costs shown in different countries and over different months, users will be able to plan their travel budget. In the future, I want to make the app available to users so that they can also use it when travelling and collate their expenses
 
-## Demo and Screenshots
+The main purpose of my application is to record my daily expenses during travelling by camper van. On the basis of costs shown in different countries and over different months, users will be able to plan their travel budget. In the future, I want to make the app available to users so that they can also use it when travelling and collate their expenses.
+
+## Screenshots
+![MainView](./imagesReadme/MainView.png)
+![MonthView](./imagesReadme/MonthView.png)
+![CountryView](./imagesReadme/CountryView.png)
+![Convert](./imagesReadme/Converter.png)
+![RegistrationView](./imagesReadme/RegistrationView.png)
+![LoginView](./imagesReadme/LoginView.png)
+![VerifyView](./imagesReadme/VerifyView.png)
+![AddCategoryAndCountryView](./imagesReadme/AddCategoryAndCountryView.png)
+![AddPaymentView](./imagesReadme/AddPaymentView.png)
 
 ## Features
-- [x] the users has the option to select the country or month in which they can check expenses
+- [x] the user has the option to select the country or month in which they can check expenses
 - [x] the month and country view displays the categories available in the database, their totals and a summary of the entire month and a special component makes it possible to convert the calculated value in a foreign currency to take the appropriate amount on a trip
 - [x] enables registration and login for the admin
 - [x] the logged-in admin can add the category and country and then the expenses to the database
 - [ ] does not yet have updating and deleting facilities
-- [ ] users do not have the possibility to create their own database to control expenditure
+- [ ] currently users use the application passively; in the future, thanks to the implementation of users tables linked by foreign keys to other tables (userId), they will be able to record their expenses.
 
 ## Technologies Used
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" /> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" /> <img src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white" /> <img src="https://img.shields.io/badge/WebStorm-000000?style=for-the-badge&logo=WebStorm&logoColor=white" /> 
+<img alt="badges of React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img alt="badges of React" src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" /> <img alt="badges of Typescript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> <img alt="badges of Sass" src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" /> <img alt="badges of MacOs" src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white" /> <img alt="badges of Webstorm" src="https://img.shields.io/badge/WebStorm-000000?style=for-the-badge&logo=WebStorm&logoColor=white" /> 
 
 ## Usage
 ### Available Scripts
