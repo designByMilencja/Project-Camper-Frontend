@@ -1,15 +1,18 @@
 # Project Camper Frontend 🚐
+
 This is my individual project for Mega Kurs. The idea and code is my creation.
 
 ## Table of Contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
+
 * [Features](#features)
 * [Technologies used](#technologies-used)
 * [Usage](#usage)
 * [Contact](#contact)
 
 ## General Info
+
 The main purpose of my application is to record my daily expenses during travelling by camper van. On the basis of costs shown in different countries and over different months, users will be able to plan their travel budget. In the future, I want to make the app available to users so that they can also use it when travelling and collate their expenses.
 
 ## Screenshots
