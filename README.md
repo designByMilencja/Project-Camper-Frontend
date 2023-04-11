@@ -29,7 +29,7 @@ The main purpose of my application is to record my daily expenses during travell
 - [x] enables registration and login for the admin
 - [x] the logged-in admin can add the category and country and then the expenses to the database
 - [ ] does not yet have updating and deleting facilities
-- [ ] users do not have the possibility to create their own database to control expenses
+- [ ] currently users use the application passively; in the future, thanks to the implementation of users tables linked by foreign keys to other tables (userId), they will be able to record their expenses.
 
 ## Technologies Used
 <img alt="badges of React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> <img alt="badges of React" src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" /> <img alt="badges of Typescript" src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> <img alt="badges of Sass" src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" /> <img alt="badges of MacOs" src="https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=apple&logoColor=white" /> <img alt="badges of Webstorm" src="https://img.shields.io/badge/WebStorm-000000?style=for-the-badge&logo=WebStorm&logoColor=white" /> 
