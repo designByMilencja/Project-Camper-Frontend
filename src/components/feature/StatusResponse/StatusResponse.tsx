@@ -45,6 +45,7 @@ export const StatusResponse = ({code, keyCategory}: Props) => {
                 category: 'Jeśli chcesz dodać kategorię musisz się zalogować',
                 country: 'Jeśli chcesz dodać kraj musisz się zalogować',
                 payment: 'Jeśli chcesz dodać wydatek musisz się zalogować',
+                error: 'Nieprawidłowy login lub hasło'
             }
         }, {
             code: Status.ServerError,

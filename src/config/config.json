@@ -3,6 +3,7 @@
   "payment_url": "http://localhost:3001/payment",
   "country_url": "http://localhost:3001/country",
   "month_url": "http://localhost:3001/month",
+  "login_url": "http://localhost:3001/login",
   "verify_url": "http://localhost:3001/registration/verify/:key",
   "registration_url": "http://localhost:3001/registration",
   "apiNBP_url": "https://api.nbp.pl/api/exchangerates/tables/A/?format=json",
