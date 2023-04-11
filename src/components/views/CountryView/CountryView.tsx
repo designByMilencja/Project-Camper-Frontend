@@ -1,56 +1,35 @@
 import React from "react";
-import './CountryView.scss';
-import {ConverterView} from "../../common/Converter/Converter";
+import "../../../styles/table.scss";
+import {CountryEntity, CategoryEntity} from 'types';
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 import {useParams} from "react-router-dom";
+import {ConverterView} from "../../feature/Converter/Converter";
+import {SumAllCategoryInCountry} from "../../feature/Sum/SumAllCategoryInCountry";
+import {CountrySumTableView} from "./CountrySumTableView";
 import {Line} from "../../common/Line/Line";
-import {CountryEntity} from 'types';
-import {CategoryEntity} from 'types';
-import {SumCategoryInCountry} from "../../Sum/SumCategoryInCountry";
-import {SumAllCategoryInCountry} from "../../Sum/SumAllCategoryInCountry";
 import {ErrorView} from "../ErrorView/ErrorView";
+import {LoadingView} from "../LoadingView/LoadingView";
+import {Subtitle} from "../../common/Subtitle/Subtitle";
 
 export const CountryView = () => {
+    const {country} = useParams();
     const [categoriesData, isLoadingCategories] = useFetchAndLoading<CategoryEntity[] | null, boolean>('http://localhost:3001/category');
     const [countriesData, isLoadingCountries] = useFetchAndLoading<CountryEntity[] | null, boolean>('http://localhost:3001/country');
-    const allowCountries = Array.isArray(countriesData) ? countriesData.map((country: CountryEntity) => country.name) : [];
-    const {country} = useParams();
+    const allowCountries = countriesData?.map((country: CountryEntity) => country.name) ?? [];
+    const [chosenCountry] = countriesData?.filter((chosenCountry: CountryEntity) => chosenCountry.name === country).map((chosenCountry: CountryEntity) => chosenCountry.id) ?? [];
 
-    const [chosenCountry] = Array.isArray(countriesData) ? countriesData.filter((chosenCountry:CountryEntity) => chosenCountry.name === country).map((chosenCountry: CountryEntity) => chosenCountry.id) : [];
-
-
-
-    if (isLoadingCountries || isLoadingCategories) return <p className="load">Trwa ładowanie...</p>
-    if (typeof country === "undefined") {
-        return null
-    }
-    return <>
-        <h3>Wydatki 2023 💰
-            {allowCountries.includes(country.toUpperCase()) ? ` Kraj: ${country.toUpperCase()}` :
-                <strong> Niestety nie mamy informacji z podanego kraju :( </strong>}
-        </h3>
-        {allowCountries.includes(country.toUpperCase()) ?
-            <div>
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Kategoria</th>
-                        <th>Suma</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {categoriesData ? categoriesData.map((category:CategoryEntity) => <tr key={category.id}>
-                        <td>{category.name}</td>
-                        <SumCategoryInCountry idCategory={category.id} idCountry={chosenCountry}/></tr>) : null}
-                    </tbody>
-                </table>
-                <SumAllCategoryInCountry idCountry={chosenCountry}/>
-                <Line/>
-            </div>
-            :
-            null}
-        {allowCountries.includes(country.toUpperCase()) ?
-            <ConverterView/> : <ErrorView text="Wprowadź poprawną nazwę kraju, aby sprawdzić wydatki"/>
-           }
-    </>
-}
+    if (isLoadingCountries || isLoadingCategories) return <LoadingView/>
+    return (<>
+            {country && allowCountries.includes(country.toUpperCase()) ?
+                <>
+                    <Subtitle color="black" text={`Wydatki 2023 💰Kraj: ${country.toUpperCase()}`}/>
+                    <CountrySumTableView categoriesData={categoriesData} chosenCountry={chosenCountry}/>
+                    <SumAllCategoryInCountry idCountry={chosenCountry}/>
+                    <Line/>
+                    <ConverterView/>
+                </>
+                :
+                <ErrorView text="Wprowadź poprawną nazwę kraju, aby sprawdzić wydatki"/>}
+        </>
+    );
+};

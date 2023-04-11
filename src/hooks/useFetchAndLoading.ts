@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {handleErrors} from "../utils";
+import {handleErrors} from "../utils/handleErrors";
 
 export const useFetchAndLoading = <T, B>(fetchUrl: string): [T | null, B | boolean] => {
 

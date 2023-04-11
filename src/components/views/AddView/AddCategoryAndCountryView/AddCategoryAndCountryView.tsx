@@ -1,23 +1,16 @@
 import React from "react";
-import {AddCategoryView} from "./AddCategoryView";
-import {AddCountryView} from "./AddCountryView";
 import '../AddView.scss';
-import '../../../common/Button/Button.scss'
+import {AddCategoryView} from "./AddCategoryView/AddCategoryView";
+import {AddCountryView} from "./AddCountryView/AddCountryView";
 import {Button} from "../../../common/Button/Button";
-import {useNavigate} from "react-router-dom";
+import {Subtitle} from "../../../common/Subtitle/Subtitle";
 
 export const AddCategoryAndCountryView = () => {
-    const navigate = useNavigate()
-    function logout() {
-        sessionStorage.removeItem('token');
-        navigate('/login')
-    }
     return <>
-        <h2 className="add">Dodaj kategorię lub kraj, by móc ewidencjonowac swoje wydatki 💰</h2>
+        <Subtitle color="black" text="Dodaj kategorię lub kraj, by móc ewidencjonowac swoje wydatki 💰"/>
         <AddCategoryView/>
         <AddCountryView/>
         <Button text="Przejdź do dodawania wydatków" to="/add/payment" name="center"/>
-        <button className="center" onClick={logout}>Wyloguj</button>
     </>
 
 }
