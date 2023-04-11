@@ -6,7 +6,7 @@ export const LogoutButton = () => {
     const navigate = useNavigate()
     function logout() {
         sessionStorage.removeItem('token');
-        navigate('/admin');
+        navigate('/access');
     }
     return (<Button name="center" text="Wyloguj" onClick={logout}/>)
 }

@@ -5,7 +5,6 @@ import '../../AddView/AddView.scss'
 import {useForm} from "../../../../hooks/useForm";
 import {useNavigate} from "react-router-dom";
 import {handleErrors} from "../../../../utils/handleErrors";
-import {BackToMainButton} from "../../../common/Button/BackToMainButton";
 import {Button} from "../../../common/Button/Button";
 import {InputField} from "../../../common/InputField/InputField";
 import {SubSubtitle} from "../../../common/SubSubtitle/SubSubtitle";
@@ -56,6 +55,5 @@ export const LoginView = () => {
                 <Button text="Zaloguj" name="btn"/>
                 <StatusResponse code={status} keyCategory="error"/>
             </form>}
-        <BackToMainButton/>
     </>)
 }

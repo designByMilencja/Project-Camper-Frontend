@@ -7,8 +7,8 @@ import {CountryView} from "../CountryView/CountryView";
 import {ErrorView} from "../ErrorView/ErrorView";
 import {AddPaymentView} from "../AddView/AddPaymentView/AddPaymentView";
 import {AddCategoryAndCountryView} from "../AddView/AddCategoryAndCountryView/AddCategoryAndCountryView";
-import {RegistrationView} from "../AdminView/RejestrationView/RegistrationView";
-import {AdminView} from "../AdminView/AdminView";
+import {RegistrationView} from "../AccessView/RejestrationView/RegistrationView";
+import {AccessView} from "../AccessView/AccessView";
 import {FooterView} from "../FooterView/FooterView";
 import {VerifyView} from "../VerifyView/VerifyView";
 
@@ -19,7 +19,7 @@ export const HomeView = () => {
             <Route path="/" element={<MainView/>}> </Route>
             <Route path="/month/:month" element={<MonthView/>}> </Route>
             <Route path="/country/:country" element={<CountryView/>}> </Route>
-            <Route path="/admin" element={<AdminView/>}> </Route>
+            <Route path="/access" element={<AccessView/>}> </Route>
             <Route path="/verify" element={<VerifyView/>}> </Route>
             <Route path="/registration" element={<RegistrationView/>}> </Route>
             <Route path="/add/category/country" element={<AddCategoryAndCountryView/>}> </Route>
