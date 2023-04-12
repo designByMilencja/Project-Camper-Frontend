@@ -1,30 +1,37 @@
 @import "../../../styles/colors";
+
 button {
-    padding: 1rem 1.5rem;
-    margin: 1rem;
-    background-color: $background-color;
-    border-radius: 12px;
-    cursor: pointer;
-    letter-spacing: .2rem;
+  padding: 1rem 1.5rem;
+  margin: 1rem;
+  background-color: $background-color;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: .2rem;
 }
+
 a {
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: .2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
 }
+
 a.center {
-    background-color:  $background-color;
-    display: block;
-    margin: 2rem auto;
-    width: 100%;
-    padding: 12px;
-    text-align: center;
+  background-color: $background-color;
+  display: block;
+  margin: 2rem auto;
+  width: 100%;
+  padding: 12px;
+  text-align: center;
 }
+
 a.menu {
-    position: absolute;
-    top: 5%;
-    right: 15%;
+  color: $link-color;
+  position: absolute;
+  top: 5%;
+  right: 15%;
 }
+
 a.select {
-    margin: 0 auto;
+  margin: 0 auto;
+  color: $link-color;
 }
