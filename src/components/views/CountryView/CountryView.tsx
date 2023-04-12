@@ -10,11 +10,13 @@ import {Line} from "../../common/Line/Line";
 import {ErrorView} from "../ErrorView/ErrorView";
 import {LoadingView} from "../LoadingView/LoadingView";
 import {Subtitle} from "../../common/Subtitle/Subtitle";
+import {apiUrl} from "../../../config/api";
+
 
 export const CountryView = () => {
     const {country} = useParams();
-    const [categoriesData, isLoadingCategories] = useFetchAndLoading<CategoryEntity[] | null, boolean>('http://localhost:3001/category');
-    const [countriesData, isLoadingCountries] = useFetchAndLoading<CountryEntity[] | null, boolean>('http://localhost:3001/country');
+    const [categoriesData, isLoadingCategories] = useFetchAndLoading<CategoryEntity[] | null, boolean>(`${apiUrl}/category`);
+    const [countriesData, isLoadingCountries] = useFetchAndLoading<CountryEntity[] | null, boolean>(`${apiUrl}/country`);
     const allowCountries = countriesData?.map((country: CountryEntity) => country.name) ?? [];
     const [chosenCountry] = countriesData?.filter((chosenCountry: CountryEntity) => chosenCountry.name === country).map((chosenCountry: CountryEntity) => chosenCountry.id) ?? [];
 

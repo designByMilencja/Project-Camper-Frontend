@@ -1,6 +1,6 @@
 import React from "react";
 import "./Sum.scss";
-import config from "../../../config/config.json";
+import {apiUrl} from "../../../config/api";
 import {useFetchAndLoading} from "../../../hooks/useFetchAndLoading";
 
 interface Props {
@@ -9,8 +9,7 @@ interface Props {
 }
 
 export const SumCategoryInMonth = ({idCategory, month}: Props): JSX.Element => {
-    const {sumCategory_url} = config;
-    const url = `${sumCategory_url}/${idCategory}/${month}`;
+    const url = `${apiUrl}/payment/sum/month/${idCategory}/${month}`;
     const [data, isLoading] = useFetchAndLoading<number, boolean>(url);
 
     return (<>

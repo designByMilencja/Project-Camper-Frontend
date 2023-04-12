@@ -9,11 +9,12 @@ import {Line} from "../../common/Line/Line";
 import {ErrorView} from "../ErrorView/ErrorView";
 import {LoadingView} from "../LoadingView/LoadingView";
 import {Subtitle} from "../../common/Subtitle/Subtitle";
+import {apiUrl} from "../../../config/api";
 
 export const MonthView = () => {
     const {month} = useParams();
-    const [categoriesData, isLoadingCategories] = useFetchAndLoading<CategoryEntity[] | null, boolean>('http://localhost:3001/category');
-    const [monthsData, isLoadingMonths] = useFetchAndLoading<MonthEntity[] | null, boolean>('http://localhost:3001/month');
+    const [categoriesData, isLoadingCategories] = useFetchAndLoading<CategoryEntity[] | null, boolean>(`${apiUrl}/category`);
+    const [monthsData, isLoadingMonths] = useFetchAndLoading<MonthEntity[] | null, boolean>(`${apiUrl}/month`);
     const allowMonths = monthsData?.map((month: MonthEntity) => month.name) ?? [];
     const chosenMonth = monthsData?.find((chosenMonth: MonthEntity) => chosenMonth.name === month)?.number;
 
