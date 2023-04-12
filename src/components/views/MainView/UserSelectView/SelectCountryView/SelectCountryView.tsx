@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {CountryEntity} from 'types';
-import config from "../../../../../config/config.json";
+import {apiUrl} from "../../../../../config/api";
 import {useFetchAndLoading} from "../../../../../hooks/useFetchAndLoading";
 import {Button} from "../../../../common/Button/Button";
 import {LoadingView} from "../../../LoadingView/LoadingView";
@@ -8,8 +8,7 @@ import {SelectCountry} from "./SelectCountry/SelectCountry";
 
 export const SelectCountryView = () => {
     const [country, setCountry] = useState<string>('');
-    const {country_url} = config;
-    const [countriesData, isLoadingCountriesData] = useFetchAndLoading<CountryEntity[] | null, boolean>(country_url);
+    const [countriesData, isLoadingCountriesData] = useFetchAndLoading<CountryEntity[] | null, boolean>(`${apiUrl}/country`);
 
     const changeCountry = (e: React.ChangeEvent<HTMLSelectElement>): void => {
         setCountry(e.target.value)

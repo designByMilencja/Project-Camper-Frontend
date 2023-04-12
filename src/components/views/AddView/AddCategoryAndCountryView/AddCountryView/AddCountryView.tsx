@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import config from "../../../../../config/config.json";
+import {apiUrl} from "../../../../../config/api";
 import {Button} from "../../../../common/Button/Button";
 import {handleErrors} from "../../../../../utils/handleErrors";
 import {StatusResponse} from "../../../../feature/StatusResponse/StatusResponse";
 import {InputField} from "../../../../common/InputField/InputField";
 import {SelectCurrencyFromAPI} from "./SelectCurrencyFromAPI";
 import {LogoutButton} from "../../../../common/Button/LogoutButton";
-import { CountryEntity } from "types";
+import {CountryEntity} from "types";
 import {SubSubtitle} from "../../../../common/SubSubtitle/SubSubtitle";
 
 export const AddCountryView = () => {
@@ -20,8 +20,7 @@ export const AddCountryView = () => {
     const saveNewCountry = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const {country_url} = config;
-            const res = await fetch(country_url, {
+            const res = await fetch(`${apiUrl}/country`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -39,7 +38,7 @@ export const AddCountryView = () => {
         }
     }
     const saveForm = (key: string, value: string) => {
-        setForm(prevState=> ({...prevState, [key]: value}));
+        setForm(prevState => ({...prevState, [key]: value}));
     }
     const clearInput = () => {
         setStatus(0)
@@ -52,7 +51,7 @@ export const AddCountryView = () => {
             <SelectCurrencyFromAPI saveForm={saveForm} form={form}/>
             <Button text="Dodaj kraj" name="btn"/>
             <StatusResponse code={status} keyCategory="country"/>
-            {status !== 401 ? <LogoutButton/> : <Button text="Przejdź do logowania" to="/admin" name="center"/>}
+            {status !== 401 ? <LogoutButton/> : <Button text="Przejdź do logowania" to="/access" name="center"/>}
         </form>
     </>
 }

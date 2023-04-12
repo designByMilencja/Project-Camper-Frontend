@@ -1,7 +1,7 @@
 # Project Camper Frontend 🚐
 
 This is my individual project for Mega Kurs. The idea and code is my creation.
-
+Link to a working project https://www.projectcamper.networkmanager.pl/
 ## Table of Contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
@@ -29,7 +29,7 @@ The main purpose of my application is to record my daily expenses during travell
 ## Features
 - [x] the user has the option to select the country or month in which they can check expenses
 - [x] the month and country view displays the categories available in the database, their totals and a summary of the entire month and a special component makes it possible to convert the calculated value in a foreign currency to take the appropriate amount on a trip
-- [x] enables registration and login for the admin
+- [x] simple registration and login for the admin
 - [x] the logged-in admin can add the category and country and then the expenses to the database
 - [ ] does not yet have updating and deleting facilities
 - [ ] currently users use the application passively; in the future, thanks to the implementation of users tables linked by foreign keys to other tables (userId), they will be able to record their expenses.
@@ -66,3 +66,6 @@ Your app is ready to be deployed!
 ## Contact
 Created by desingByMilencja - feel free to contact me!
 designbymilencja@gmail.com
+
+## *Specjalna dokumentacja dla Kuby
+Cześć, tu kilka słów o moim projekcie :) Cel jaki postawiłam sobie na początku to było stworzenie aplikacji, dla mnie jako admina, która będzie monitorować moje wydatki podczas podróżowania camperem, użytkownicy mieli mieć do niej dostęp, aby móć sprawdzać ile wydaje się w różnych krajach/miesiącach na poszczególne kategorie. Ten cel został zrealizowany, i pojawił się pomysł rozrzerzenia aplikacji, aby użytkownicy mogli sami również tak jak ja ewidencjonować swoje wydatki. Zrobiłam więc narazie prostą rejestrację i logowanie, dla zalogowanego użytkownika jest możliwość dodawania kategorii, kraju i wydatku, po resjestracji wysyłany jest link weryfikacyjny-na ten moment do mnie, aby kontrolować pojawiające się w bazie danych informację. Bazę danych chcę rozrzerzyc o relacje user id do dodanych przez niego rzeczy, dzięki czemu będzie możliwe filtrowanie informacji dla każdego zainteresowanego osobno. Na frontendzie zaczęłam tez zagłebiać się w bibliotekę chart.js, mam zamiar wzbogacic aplikacje o interaktywne wykresy, graficzne przedstawienie rozkładu wydatków. Żałuje, że nie zrobiłam widoku na mobile, ale skupiłam się głównie na ćwiczeniu swoich sklilli backendowych, a główny cel na najbliższe tygodnie, to będzie migracja aplikacji na technologię NEST.  

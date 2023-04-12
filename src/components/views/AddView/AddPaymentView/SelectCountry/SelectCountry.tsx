@@ -1,4 +1,5 @@
 import { CountryEntity } from "types";
+import React from "react";
 
 interface Props {
     form: {
@@ -9,7 +10,8 @@ interface Props {
 }
 
 export const SelectCountry = ({ form, countriesData, saveForm }: Props) => {
-    return (
+    return (<>
+        <label>Kraj zakupu</label>
         <select
             value={form.idCountry}
             onChange={e => saveForm('idCountry', e.target.value)}
@@ -21,6 +23,6 @@ export const SelectCountry = ({ form, countriesData, saveForm }: Props) => {
                 </option>
             )) ?? []}
         </select>
-    );
+    </>);
 }
 

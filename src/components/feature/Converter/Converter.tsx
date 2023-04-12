@@ -1,18 +1,20 @@
 import React, {useState} from "react";
-import './Converter.scss';
+import "./Converter.scss";
 
 interface ExchangeRate {
     mid: number;
 }
+
 interface Rates {
-    rates:ExchangeRate[];
+    rates: ExchangeRate[];
 }
+
 export const ConverterView = () => {
     const [cost, setCost] = useState<string>('');
     const [select, setSelect] = useState<string>('');
     const [price, setPrice] = useState<number | null>(null);
 
-    const fetchExchangeRate = async (select:string): Promise<number|null> => {
+    const fetchExchangeRate = async (select: string): Promise<number | null> => {
         try {
             const url = ` https://api.nbp.pl/api/exchangerates/rates/A/${select}/?format=json`;
             const res = await fetch(url, {mode: 'cors'});
@@ -26,7 +28,7 @@ export const ConverterView = () => {
     }
     const clicked = async () => {
         const exchangeRate = await fetchExchangeRate(select);
-        if(exchangeRate !== null) {
+        if (exchangeRate !== null) {
             const result = Number(cost) / exchangeRate;
             setPrice(result);
         } else {

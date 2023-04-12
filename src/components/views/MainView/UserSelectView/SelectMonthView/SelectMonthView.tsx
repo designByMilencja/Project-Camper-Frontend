@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import '../UserSelectView.scss'
-import config from "../../../../../config/config.json";
+import {apiUrl} from "../../../../../config/api";
 import {MonthEntity} from 'types';
 import {useFetchAndLoading} from "../../../../../hooks/useFetchAndLoading";
 import {Button} from "../../../../common/Button/Button";
@@ -9,8 +9,7 @@ import {LoadingView} from "../../../LoadingView/LoadingView";
 
 export const SelectMonthView = () => {
     const [month, setMonth] = useState<string>('');
-    const {month_url} = config;
-    const [monthsData, isLoadingMonthData] = useFetchAndLoading<MonthEntity[] | null, boolean>(month_url);
+    const [monthsData, isLoadingMonthData] = useFetchAndLoading<MonthEntity[] | null, boolean>(`${apiUrl}/month`);
 
     const changeMonth = (e: React.ChangeEvent<HTMLSelectElement>): void => {
         setMonth(e.target.value)

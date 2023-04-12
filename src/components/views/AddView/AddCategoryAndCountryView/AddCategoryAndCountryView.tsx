@@ -1,5 +1,5 @@
 import React from "react";
-import '../AddView.scss';
+import "../AddView.scss";
 import {AddCategoryView} from "./AddCategoryView/AddCategoryView";
 import {AddCountryView} from "./AddCountryView/AddCountryView";
 import {Button} from "../../../common/Button/Button";

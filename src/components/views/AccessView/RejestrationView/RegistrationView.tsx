@@ -1,5 +1,5 @@
 import React, {SyntheticEvent, useState} from "react";
-import config from "../../../../config/config.json";
+import {apiUrl} from "../../../../config/api";
 import {RegistrationEntity} from "types";
 import "../../AddView/AddView.scss";
 import {useNavigate} from "react-router-dom";
@@ -25,8 +25,7 @@ export const RegistrationView = () => {
         e.preventDefault();
         try {
             setLoading(true);
-            const {registration_url} = config;
-            const res = await fetch(registration_url, {
+            const res = await fetch(`${apiUrl}/registration`, {
                 method: 'POST',
                 headers: {
                     'Content-type': 'application/json',
@@ -62,6 +61,6 @@ export const RegistrationView = () => {
                 <Button text="Zarejestruj" name="btn"/>
                 <StatusResponse code={status} keyCategory="registration"/>
             </form>}
-        <Button text="Przejdź do logowania" to="/admin" name="center" disabled={loading}/>
+        <Button text="Przejdź do logowania" to="/access" name="center" disabled={loading}/>
     </>
 }

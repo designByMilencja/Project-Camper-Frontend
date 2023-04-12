@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {CountryEntity, CategoryEntity, PaymentEntity} from 'types';
-import config from "../../../../config/config.json";
+import {apiUrl} from "../../../../config/api";
 import {handleErrors} from "../../../../utils/handleErrors";
 import {useFetchAndLoading} from "../../../../hooks/useFetchAndLoading";
 import {Button} from "../../../common/Button/Button";
@@ -27,16 +27,15 @@ export const AddPaymentView = () => {
     });
 
     const [status, setStatus] = useState<number>(0);
-    const [countriesData, isLoadingCountriesData] = useFetchAndLoading<CountryEntity[] | null, boolean>('http://localhost:3001/country');
-    const [categoriesData, isLoadingCategoriesData] = useFetchAndLoading<CategoryEntity[] | null, boolean>('http://localhost:3001/category');
+    const [countriesData, isLoadingCountriesData] = useFetchAndLoading<CountryEntity[] | null, boolean>(`${apiUrl}/country`);
+    const [categoriesData, isLoadingCategoriesData] = useFetchAndLoading<CategoryEntity[] | null, boolean>(`${apiUrl}/category`);
     const currencies = countriesData?.map((country: CountryEntity) => country.currency) ?? [];
     const noDoubleCurrencies = [...new Set(currencies)];
 
     const saveNewPayment = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const {payment_url} = config;
-            const res = await fetch(payment_url, {
+            const res = await fetch(`${apiUrl}/payment`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -83,7 +82,7 @@ export const AddPaymentView = () => {
             <SelectCategory form={form} categoriesData={categoriesData} saveForm={saveForm}/>
             <Button text="Dodaj wydatek" name="btn"/>
             <StatusResponse code={status} keyCategory="payment"/>
-            {status !== 401 ? <LogoutButton/> : <Button text="Przejdź do logowania" to="/admin" name="center"/>}
+            {status !== 401 ? <LogoutButton/> : <Button text="Przejdź do logowania" to="/access" name="center"/>}
         </form>
         <BackToMainButton/>
     </>)

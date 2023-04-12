@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import config from "../../../../../config/config.json";
-import { CategoryEntity } from "types";
+import {apiUrl} from "../../../../../config/api";
+import {CategoryEntity} from "types";
 import {handleErrors} from "../../../../../utils/handleErrors";
 import {Button} from "../../../../common/Button/Button";
 import {StatusResponse} from "../../../../feature/StatusResponse/StatusResponse";
@@ -14,8 +14,7 @@ export const AddCategoryView = () => {
     const saveNewCategory = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const {category_url} = config;
-            const res: Response = await fetch(category_url, {
+            const res: Response = await fetch(`${apiUrl}/category`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -41,7 +40,9 @@ export const AddCategoryView = () => {
     return <>
         <form className="form" onSubmit={saveNewCategory}>
             <SubSubtitle text="Dodaj kategorię"/>
-            <InputField label="Nazwa kategorii" type="text" name="name" value={form.name} onChange={e => saveForm('name', e.target.value)} minLength={4} maxLength={50} onMouseDown={clearInput} required/>
+            <InputField label="Nazwa kategorii" type="text" name="name" value={form.name}
+                        onChange={e => saveForm('name', e.target.value)} minLength={4} maxLength={50}
+                        onMouseDown={clearInput} required/>
             <Button text="Dodaj kategorię" name="btn"></Button>
             <StatusResponse code={status} keyCategory="category"/>
         </form>
