@@ -26,7 +26,7 @@ The main purpose of my application is to record my daily expenses during travell
 ## Features
 - [x] the user has the option to select the country or month in which they can check expenses
 - [x] the month and country view displays the categories available in the database, their totals and a summary of the entire month and a special component makes it possible to convert the calculated value in a foreign currency to take the appropriate amount on a trip
-- [x] enables registration and login for the admin
+- [x] simple registration and login for the admin
 - [x] the logged-in admin can add the category and country and then the expenses to the database
 - [ ] does not yet have updating and deleting facilities
 - [ ] currently users use the application passively; in the future, thanks to the implementation of users tables linked by foreign keys to other tables (userId), they will be able to record their expenses.
