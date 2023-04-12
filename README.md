@@ -1,6 +1,6 @@
 # Project Camper Frontend 🚐
 This is my individual project for Mega Kurs. The idea and code is my creation.
-
+Link to a working project https://www.projectcamper.networkmanager.pl/
 ## Table of Contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
@@ -63,3 +63,6 @@ Your app is ready to be deployed!
 ## Contact
 Created by desingByMilencja - feel free to contact me!
 designbymilencja@gmail.com
+
+## *Specjalna dokumentacja dla Kuby
+Cześć, tu kilka słów o moim projekcie :) Cel jaki postawiłam sobie na początku to było stworzenie aplikacji, dla mnie jako admina, która będzie monitorować moje wydatki podczas podróżowania camperem, użytkownicy mieli mieć do niej dostęp, aby móć sprawdzać ile wydaje się w różnych krajach/miesiącach na poszczególne kategorie. Ten cel został zrealizowany, i pojawił się pomysł rozrzerzenia aplikacji, aby użytkownicy mogli sami również tak jak ja ewidencjonować swoje wydatki. Zrobiłam więc narazie prostą rejestrację i logowanie, dla zalogowanego użytkownika jest możliwość dodawania kategorii, kraju i wydatku, po resjestracji wysyłany jest link weryfikacyjny-na ten moment do mnie, aby kontrolować pojawiające się w bazie danych informację. Bazę danych chcę rozrzerzyc o relacje user id do dodanych przez niego rzeczy, dzięki czemu będzie możliwe filtrowanie informacji dla każdego zainteresowanego osobno. 
