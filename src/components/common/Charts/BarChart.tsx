@@ -17,6 +17,4 @@ interface Props {
 }
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-export const BarChart = (props: Props) => {
-    return <div className="chart"><Bar data={props.chartData}/></div>
-}
+export const BarChart = (props: Props) => <div className="chart"><Bar data={props.chartData}/></div>

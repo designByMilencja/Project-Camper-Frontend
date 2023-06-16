@@ -6,6 +6,4 @@ interface Props {
     color?: string;
 }
 
-export const Subtitle = ({text, color}: Props) => {
-    return (<h2 className="subtitle" style={{color: color}}>{text}</h2>)
-}
+export const Subtitle = ({text, color}: Props) => <h2 className="subtitle" style={{color: color}}>{text}</h2>
