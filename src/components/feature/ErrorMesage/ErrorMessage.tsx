@@ -5,6 +5,4 @@ interface Props {
     message: string;
 }
 
-export const ErrorMessage = ({message}: Props) => {
-    return <p className="error">{message}</p>;
-}
+export const ErrorMessage = ({message}: Props) => <p className="error">{message}</p>
