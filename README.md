@@ -1,7 +1,7 @@
 # Project Camper Frontend 🚐
 
 This is my individual project for Mega Kurs. The idea and code is my creation.
-Link to a working project https://www.projectcamper.networkmanager.pl/
+Link to a working project https://projectcamper.networkmanager.pl/
 ## Table of Contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
