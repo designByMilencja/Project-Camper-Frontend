@@ -1,5 +1,5 @@
 # Project Camper Frontend 🚐
-
+This is the old version of frontend, new version you will find here: https://github.com/designByMilencja/Project-Camper-NewFrontend
 This is my individual project for Mega Kurs. The idea and code is my creation.
 Link to a working project https://projectcamper.networkmanager.pl/
 ## Table of Contents
